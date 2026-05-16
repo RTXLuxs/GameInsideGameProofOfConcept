@@ -9,9 +9,12 @@ public class PlayerMovement2D : MonoBehaviour
 
     public bool canMove = false;
 
+    private AudioSource footstepAudioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        footstepAudioSource = GameObject.Find("FootstepProxy").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -20,15 +23,25 @@ public class PlayerMovement2D : MonoBehaviour
         {
             movement.x = 0;
             movement.y = 0;
+            footstepAudioSource.enabled = false;
             return;
         }
-        
+
         // Get input
         movement.x = Input.GetAxisRaw("Horizontal"); // A/D or Left/Right
         movement.y = Input.GetAxisRaw("Vertical");   // W/S or Up/Down
 
-        // Normalize so diagonal isn't faster
-        movement = movement.normalized;
+        if (movement.x != 0 || movement.y != 0)
+        {
+            footstepAudioSource.enabled = true;
+        }
+        else
+        {
+            footstepAudioSource.enabled = false;
+        }
+
+            // Normalize so diagonal isn't faster
+            movement = movement.normalized;
     }
 
     void FixedUpdate()
