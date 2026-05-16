@@ -30,7 +30,7 @@ public class DeskInteraction : MonoBehaviour
         }
         else
         {
-            uiText.SetActive(false);
+            //uiText.SetActive(false);
         }
 
         if (UserInput.instance.interactPressed && Vector3.Distance(pc.position, player.position) <= range)

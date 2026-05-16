@@ -15,7 +15,13 @@ public class WorldObjectView3D : MonoBehaviour
         if (worldObject.GetState() == WorldObjectState.Open)
         {
             if (targetToDisable != null)
-                Destroy(targetToDisable);
+                targetToDisable.SetActive(false);
+        }
+
+        if (worldObject.GetState() == WorldObjectState.Closed)
+        {
+            if (targetToDisable != null)
+                targetToDisable.SetActive(true);
         }
     }
 }

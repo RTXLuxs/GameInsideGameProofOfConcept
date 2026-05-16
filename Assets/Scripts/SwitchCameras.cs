@@ -3,8 +3,21 @@ using UnityEngine;
 
 public class SwitchCameras : MonoBehaviour
 {
+    public static SwitchCameras Instance;
+
     public CinemachineCamera fpsCam;
     public CinemachineCamera deskCam;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public void SwitchToDesk()
     {

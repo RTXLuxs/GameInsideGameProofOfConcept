@@ -36,4 +36,15 @@ public class PlayerMovement2D : MonoBehaviour
         // Move the player
         rb.linearVelocity = movement * moveSpeed;
     }
+
+    public void EnableControls()
+    {
+        canMove = true;
+    }
+
+    //Used to enable 3D controls
+    public void DisableControls()
+    {
+        canMove = false;
+    }
 }
