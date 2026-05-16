@@ -16,7 +16,7 @@ public class WorldState : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
+            if (Instance != null)
         {
             Destroy(gameObject);
             return;
