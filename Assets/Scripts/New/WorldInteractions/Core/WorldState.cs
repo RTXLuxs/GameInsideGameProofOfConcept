@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class WorldState : MonoBehaviour
 
     private Dictionary<string, WorldObjectState> states = new();
 
+    public event Action<string, WorldObjectState> OnStateChanged;
+
     private void Awake()
     {
             if (Instance != null)
@@ -28,7 +31,17 @@ public class WorldState : MonoBehaviour
 
     public void SetState(string id, WorldObjectState state)
     {
+        if (states.TryGetValue(id, out var currentState))
+        {
+            if (currentState == state)
+            {
+                return;
+            }
+        }
+        
         states[id] = state;
+
+        OnStateChanged?.Invoke(id, state);
     }
 
     public WorldObjectState GetState(string id)
