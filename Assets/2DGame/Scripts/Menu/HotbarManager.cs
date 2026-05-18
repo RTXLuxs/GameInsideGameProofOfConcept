@@ -16,6 +16,7 @@ public class HotbarManager : MonoBehaviour
     private Vector2 lastMoveDirection;
 
     [SerializeField] private float throwSpeed = 8f;
+    [SerializeField] private float throwDistance = 5f;
     [SerializeField] private LayerMask obstacleLayer;
 
     private Key[] hotbarKeys;
@@ -88,11 +89,12 @@ public class HotbarManager : MonoBehaviour
         GameObject prefab = itemDictionary.GetItemPrefab(item.ID);
         if (prefab == null) return;
 
-        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 spawnPos = playerMovement.transform.position;
+        Vector2 facing = lastMoveDirection != Vector2.zero ? lastMoveDirection : Vector2.down;
+        Vector2 throwTarget = spawnPos + facing * throwDistance;
 
         GameObject thrown = Instantiate(prefab, spawnPos, Quaternion.identity);
-        thrown.AddComponent<ThrownItem>().Init(mouseWorld, throwSpeed, obstacleLayer);
+        thrown.AddComponent<ThrownItem>().Init(throwTarget, throwSpeed, obstacleLayer);
 
         Destroy(slot.currentItem);
         slot.currentItem = null;
