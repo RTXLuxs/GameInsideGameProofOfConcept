@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SceneManager.LoadScene("2DMinigame", LoadSceneMode.Additive);
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
     }
 
     public GameObject targetObjectInMainScene;
