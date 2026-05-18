@@ -44091,9 +44091,10 @@ MonoBehaviour:
   equippedItemPosition: {fileID: 1326976996}
   equippedItemPositionLeft: {fileID: 1378614106}
   throwSpeed: 8
+  throwDistance: 5
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!1 &2078896346
 GameObject:
   m_ObjectHideFlags: 0

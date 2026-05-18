@@ -7,6 +7,10 @@ public class FootstepProxy : MonoBehaviour
     private void Start()
     {
         player2D = GameObject.Find("Player2D").transform;
+        if (player2D == null)
+        {
+            Debug.LogError("Player2D not found in the scene. Please ensure there is a GameObject named 'Player2D' with a Transform component.");
+        }
     }
 
     private void LateUpdate()
