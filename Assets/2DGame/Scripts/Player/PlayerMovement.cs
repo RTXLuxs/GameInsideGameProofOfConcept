@@ -14,10 +14,14 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveInput => moveInput;
 
+    private AudioSource footstepAudioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        footstepAudioSource = GameObject.Find("FootstepProxy").GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -43,6 +47,19 @@ public class PlayerMovement : MonoBehaviour
             moveInput = context.ReadValue<Vector2>();
             animator.SetFloat("InputX", moveInput.x);
             animator.SetFloat("InputY", moveInput.y);
+
+            if (moveInput.x != 0 || moveInput.y != 0)
+            {
+                footstepAudioSource.enabled = true;
+            }
+            else
+            {
+                footstepAudioSource.enabled = false;
+            }
+        }
+        else
+        {
+            footstepAudioSource.enabled = false;
         }
     }
 
