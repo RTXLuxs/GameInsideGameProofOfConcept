@@ -1,5 +1,8 @@
 using UnityEngine;
+using Pathfinding;
 
+[RequireComponent(typeof(AIPath))]
+[UniqueComponent(tag = "ai.destination")]
 public class EnemyController : MonoBehaviour
 {
     private enum State { Patrol, Chase, Investigate }
@@ -7,52 +10,41 @@ public class EnemyController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float patrolSpeed = 2f;
     [SerializeField] private float chaseSpeed = 4f;
-    [SerializeField] private float waypointStopDistance = 0.2f;
+    [SerializeField] private float investigateSpeed = 3f;
 
     [Header("Detection")]
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private float loseRadius = 7f;
-    [SerializeField] private LayerMask playerLayer;
 
     [Header("Waypoints")]
     [SerializeField] private Transform[] waypoints;
+    [SerializeField] private float waypointDelay = 0f;
 
     [Header("Hearing")]
     [SerializeField] private float hearingRadius = 8f;
-    [SerializeField] private float investigateSpeed = 3f;
     [SerializeField] private float investigateTimeout = 5f;
 
-    [Header("Obstacle Avoidance")]
-    [SerializeField] private LayerMask obstacleLayer;
-    [SerializeField] private float obstacleDetectionRange = 1f;
-
-    [Header("Stuck Detection")]
-    [SerializeField] private float stuckCheckInterval = 1f;
-    [SerializeField] private float stuckDistanceThreshold = 0.1f;
-
-    private static readonly float[] SteerAngles = { 0f, 30f, -30f, 60f, -60f, 90f, -90f };
-
-    private Rigidbody2D rb;
-    private Animator animator;
+    private AIPath aiPath;
+    private IAstarAI ai;
     private Transform player;
     private State state = State.Patrol;
     private int waypointIndex;
-    private float stuckTimer;
-    private Vector2 lastCheckedPosition;
-    private Vector2 distractionPoint;
+    private Vector3 distractionPoint;
     private float investigateTimer;
+    private float waypointWaitTimer;
+
+    void Awake()
+    {
+        aiPath = GetComponent<AIPath>();
+        ai = aiPath;
+    }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>();
+        var playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null) player = playerObj.transform;
 
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-            player = playerObj.transform;
-
-        if (waypoints != null && waypoints.Length > 0)
-            lastCheckedPosition = transform.position;
+        GoToCurrentWaypoint();
     }
 
     void OnEnable()  => ThrownItem.Landed += OnDistractionSound;
@@ -60,167 +52,119 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        UpdateState();
-        if (state == State.Patrol)
-            CheckIfStuck();
-        if (state == State.Investigate)
-            investigateTimer += Time.deltaTime;
-    }
+        UpdateStateTransitions();
 
-    void FixedUpdate()
-    {
         switch (state)
         {
-            case State.Patrol:     
-                Patrol(); break;
-            case State.Chase:      
-                Chase(); break;
-            case State.Investigate: 
-                Investigate(); break;
+            case State.Patrol:      UpdatePatrol();      break;
+            case State.Chase:       UpdateChase();       break;
+            case State.Investigate: UpdateInvestigate(); break;
         }
     }
 
-    private void UpdateState()
+    private void UpdateStateTransitions()
     {
         if (player == null) return;
 
         float dist = Vector2.Distance(transform.position, player.position);
 
-        // Chase always takes priority
-        if (dist <= detectionRadius)
+        if (dist <= detectionRadius && state != State.Chase)
         {
-            if (state != State.Chase)
-            {
-                state = State.Chase;
-                ResetStuckTimer();
-            }
+            EnterChase();
             return;
         }
 
         if (state == State.Chase && dist > loseRadius)
+            EnterPatrol();
+    }
+
+    private void EnterChase()
+    {
+        state = State.Chase;
+        aiPath.maxSpeed = chaseSpeed;
+        ai.isStopped = false;
+        if (player != null)
         {
-            state = State.Patrol;
-            ResetStuckTimer();
+            ai.destination = player.position;
+            ai.SearchPath();
         }
+    }
+
+    private void EnterPatrol()
+    {
+        state = State.Patrol;
+        waypointWaitTimer = 0f;
+        GoToCurrentWaypoint();
+    }
+
+    private void UpdatePatrol()
+    {
+        if (waypoints == null || waypoints.Length == 0) return;
+
+        if (waypointWaitTimer > 0f)
+        {
+            waypointWaitTimer -= Time.deltaTime;
+            if (waypointWaitTimer <= 0f)
+            {
+                waypointIndex = (waypointIndex + 1) % waypoints.Length;
+                GoToCurrentWaypoint();
+            }
+            return;
+        }
+
+        if (ai.reachedEndOfPath && !ai.pathPending)
+        {
+            if (waypointDelay > 0f)
+                waypointWaitTimer = waypointDelay;
+            else
+            {
+                waypointIndex = (waypointIndex + 1) % waypoints.Length;
+                GoToCurrentWaypoint();
+            }
+        }
+    }
+
+    private void GoToCurrentWaypoint()
+    {
+        if (waypoints == null || waypoints.Length == 0) return;
+        aiPath.maxSpeed = patrolSpeed;
+        ai.isStopped = false;
+        ai.destination = waypoints[waypointIndex].position;
+        ai.SearchPath();
+    }
+
+    private void UpdateChase()
+    {
+        if (player == null) return;
+        // AIPath's repathRate handles recalculation; just keep destination current
+        ai.destination = player.position;
+    }
+
+    private void UpdateInvestigate()
+    {
+        investigateTimer += Time.deltaTime;
+        if (investigateTimer >= investigateTimeout)
+        {
+            EnterPatrol();
+            return;
+        }
+
+        if (ai.reachedEndOfPath && !ai.pathPending)
+            ai.isStopped = true;
     }
 
     private void OnDistractionSound(Vector2 soundPosition)
     {
         if (state == State.Chase) return;
-        if (Vector2.Distance(transform.position, soundPosition) > hearingRadius) return;
+        if (Vector2.Distance((Vector2)transform.position, soundPosition) > hearingRadius) return;
 
-        distractionPoint = soundPosition;
+        distractionPoint = new Vector3(soundPosition.x, soundPosition.y, 0f);
         investigateTimer = 0f;
         state = State.Investigate;
-    }
-
-    private void Patrol()
-    {
-        if (waypoints == null || waypoints.Length == 0)
-        {
-            SetVelocity(Vector2.zero);
-            return;
-        }
-
-        Transform target = waypoints[waypointIndex];
-        Vector2 desired = ((Vector2)target.position - (Vector2)transform.position).normalized;
-        Vector2 steered = Steer(desired);
-
-        SetVelocity(steered * patrolSpeed);
-
-        if (Vector2.Distance(transform.position, target.position) <= waypointStopDistance)
-        {
-            waypointIndex = (waypointIndex + 1) % waypoints.Length;
-            ResetStuckTimer();
-        }
-    }
-
-    private void Chase()
-    {
-        if (player == null) return;
-
-        Vector2 desired = ((Vector2)player.position - (Vector2)transform.position).normalized;
-        Vector2 steered = Steer(desired);
-
-        SetVelocity(steered * chaseSpeed);
-    }
-
-    private void Investigate()
-    {
-        if (investigateTimer >= investigateTimeout)
-        {
-            state = State.Patrol;
-            ResetStuckTimer();
-            return;
-        }
-
-        if (Vector2.Distance(transform.position, distractionPoint) <= waypointStopDistance)
-        {
-            SetVelocity(Vector2.zero);
-            return;
-        }
-
-        Vector2 desired = (distractionPoint - (Vector2)transform.position).normalized;
-        SetVelocity(Steer(desired) * investigateSpeed);
-    }
-
-    // Tries the desired direction first, then progressively wider angles until a clear path is found.
-    private Vector2 Steer(Vector2 desired)
-    {
-        foreach (float angle in SteerAngles)
-        {
-            Vector2 candidate = Rotate(desired, angle);
-            if (!Physics2D.Raycast(transform.position, candidate, obstacleDetectionRange, obstacleLayer))
-                return candidate;
-        }
-        return desired;
-    }
-
-    private static Vector2 Rotate(Vector2 v, float degrees)
-    {
-        float rad = degrees * Mathf.Deg2Rad;
-        float cos = Mathf.Cos(rad);
-        float sin = Mathf.Sin(rad);
-        return new Vector2(cos * v.x - sin * v.y, sin * v.x + cos * v.y);
-    }
-
-    private void CheckIfStuck()
-    {
-        stuckTimer += Time.deltaTime;
-        if (stuckTimer < stuckCheckInterval) return;
-
-        if (Vector2.Distance(transform.position, lastCheckedPosition) < stuckDistanceThreshold)
-            waypointIndex = (waypointIndex + 1) % waypoints.Length;
-
-        ResetStuckTimer();
-    }
-
-    private void ResetStuckTimer()
-    {
-        stuckTimer = 0f;
-        lastCheckedPosition = transform.position;
-    }
-
-    private void SetVelocity(Vector2 velocity)
-    {
-        rb.linearVelocity = velocity;
-        UpdateAnimator(velocity);
-    }
-
-    private void UpdateAnimator(Vector2 velocity)
-    {
-        if (animator == null) return;
-
-        bool isMoving = velocity.sqrMagnitude > 0.01f;
-        animator.SetBool("isWalking", isMoving);
-
-        if (isMoving)
-        {
-            animator.SetFloat("InputX", velocity.x);
-            animator.SetFloat("InputY", velocity.y);
-            animator.SetFloat("LastInputX", velocity.x);
-            animator.SetFloat("LastInputY", velocity.y);
-        }
+        aiPath.maxSpeed = investigateSpeed;
+        ai.isStopped = false;
+        ai.destination = distractionPoint;
+        ai.SearchPath();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -236,6 +180,9 @@ public class EnemyController : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, loseRadius);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, hearingRadius);
 
         if (waypoints == null) return;
         Gizmos.color = Color.cyan;
