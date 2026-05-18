@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 113420823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174998376}
   - component: {fileID: 174998377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244880158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3938,7 +3938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 266591417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3998,7 +3998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00020131668, y: 0.0009918213}
+  m_AnchoredPosition: {x: -0.0009579578, y: 0.0009918213}
   m_SizeDelta: {x: -143.5767, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &310169410
@@ -4052,7 +4052,7 @@ GameObject:
   - component: {fileID: 379405941}
   - component: {fileID: 379405943}
   - component: {fileID: 379405942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -33725,7 +33725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 407349734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34233,6 +34233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duck_Item (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4839150740383658675, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5698149382919853608, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -34661,7 +34665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 541450522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MapBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34777,7 +34781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 569541154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34808,7 +34812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578357117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34912,8 +34916,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 393725391}
   m_HandleRect: {fileID: 393725390}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999978
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -35107,7 +35111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 671125688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35144,6 +35148,10 @@ PrefabInstance:
     - target: {fileID: 4839150740383658675, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_Name
       value: Duck_Item (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839150740383658675, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5698149382919853608, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_Pivot.x
@@ -35353,7 +35361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734675221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35408,7 +35416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 776564555}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35614,7 +35622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 824112610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35754,7 +35762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 863266729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36336,7 +36344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 978736150}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36421,6 +36429,10 @@ PrefabInstance:
     - target: {fileID: 4062479239535446004, guid: 77696197573edf84f9fe112a0a00549f, type: 3}
       propertyPath: m_Name
       value: Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062479239535446004, guid: 77696197573edf84f9fe112a0a00549f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9063123622599328193, guid: 77696197573edf84f9fe112a0a00549f, type: 3}
       propertyPath: m_Sprite
@@ -36660,7 +36672,7 @@ GameObject:
   - component: {fileID: 1052805050}
   - component: {fileID: 1052805052}
   - component: {fileID: 1052805051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Interractables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36899,7 +36911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1063153704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37063,7 +37075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1092162501}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37094,7 +37106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1102260270}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37628,7 +37640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1302092401}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pickable Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37806,7 +37818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328962569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37837,7 +37849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1371223286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38086,7 +38098,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1417799213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38472,7 +38484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1454514340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38740,7 +38752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1539457010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38772,7 +38784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542669641}
   - component: {fileID: 1542669642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Apartment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38859,7 +38871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1561287035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38890,7 +38902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1567571460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42403,9 +42415,9 @@ Canvas:
   m_GameObject: {fileID: 1588451253}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -42416,7 +42428,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1588451257
 RectTransform:
@@ -42464,7 +42476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1590211186}
   - component: {fileID: 1590211185}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42621,7 +42633,7 @@ GameObject:
   - component: {fileID: 1623976019}
   - component: {fileID: 1623976021}
   - component: {fileID: 1623976020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WalkInFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43242,7 +43254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1641514264}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43275,7 +43287,7 @@ GameObject:
   - component: {fileID: 1707874786}
   - component: {fileID: 1707874787}
   - component: {fileID: 1707874788}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43541,6 +43553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wine_Item Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6335247857561911094, guid: 508f68796fe0fdd4c81219c6e08eca5b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6610814951662438412, guid: 508f68796fe0fdd4c81219c6e08eca5b, type: 3}
       propertyPath: m_SortingLayer
       value: 7
@@ -43647,7 +43663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1944822558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43905,7 +43921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2023935755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44096,7 +44112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2078896347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waypoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44399,7 +44415,7 @@ GameObject:
   - component: {fileID: 2138988839}
   - component: {fileID: 2138988841}
   - component: {fileID: 2138988840}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WalkBehind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44585,6 +44601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wine_Item Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6335247857561911094, guid: 508f68796fe0fdd4c81219c6e08eca5b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6615975892904991661, guid: 508f68796fe0fdd4c81219c6e08eca5b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -44681,6 +44701,10 @@ PrefabInstance:
     - target: {fileID: 214735697783367974, guid: e2a328d17f6296942820c6b83181c530, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 214735697783367974, guid: e2a328d17f6296942820c6b83181c530, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2781654243636338733, guid: e2a328d17f6296942820c6b83181c530, type: 3}
       propertyPath: chaseSpeed
@@ -44850,6 +44874,10 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[35]'
       value: 
       objectReference: {fileID: 407349734}
+    - target: {fileID: 2997612988279123267, guid: e2a328d17f6296942820c6b83181c530, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7600058028327866222, guid: e2a328d17f6296942820c6b83181c530, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.27
@@ -44910,6 +44938,10 @@ PrefabInstance:
     - target: {fileID: 4839150740383658675, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_Name
       value: Duck_Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839150740383658675, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5698149382919853608, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_Pivot.x
@@ -45004,6 +45036,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1829768824953959396, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1901803882866062224, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 14
@@ -45100,9 +45136,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7081120375836038192, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7670815993392463340, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
       propertyPath: m_Name
       value: EquippedItem_MovingLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670815993392463340, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4,7 +4,7 @@ public class PlayerState : MonoBehaviour
 {
     public static PlayerState Instance;
     private PlayerMovement3D movement3D;
-    private PlayerMovement2D movement2D;
+    private PlayerMovement movement2D;
 
     [HideInInspector] public bool isPCMode = false;
 
@@ -23,7 +23,7 @@ public class PlayerState : MonoBehaviour
 
     private void Start()
     {
-        movement2D = FindAnyObjectByType<PlayerMovement2D>();
+        movement2D = FindAnyObjectByType<PlayerMovement>();
     }
 
     public void EnterPC()
