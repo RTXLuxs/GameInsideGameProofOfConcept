@@ -31,8 +31,8 @@ public class HotbarManager : MonoBehaviour
         hotbarKeys = new Key[slotCount];
         for (int i = 0; i < slotCount; i++)
         {
-            // Map hotbar keys to 1, 2, 3, etc., with the last slot mapped to 0
-            hotbarKeys[i] = i < (slotCount - 1) ? (Key)((int)Key.Digit1 + i) : Key.Digit0;
+            // Map hotbar keys to 1, 2, 3, etc., with the last slot mapped to 6
+            hotbarKeys[i] = i < (slotCount - 1) ? (Key)((int)Key.Digit1 + i) : Key.Digit6;
         }
     }
 
