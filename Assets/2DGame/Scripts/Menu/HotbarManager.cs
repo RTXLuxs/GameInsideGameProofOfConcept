@@ -105,8 +105,7 @@ public class HotbarManager : MonoBehaviour
         GameObject prefab = itemDictionary.GetItemPrefab(item.ID);
         if (prefab == null) return;
 
-        Vector2 facing = lastMoveDirection != Vector2.zero ? lastMoveDirection : Vector2.down;
-        Vector2 dropPosition = (Vector2)playerMovement.transform.position + facing * dropDistance;
+        Vector2 dropPosition = (Vector2)playerMovement.transform.position + Random.insideUnitCircle.normalized * dropDistance;
 
         GameObject dropped = Instantiate(prefab, dropPosition, Quaternion.identity);
         dropped.name = item.name;

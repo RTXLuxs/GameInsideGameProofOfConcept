@@ -5,12 +5,14 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     private ItemDictionary itemDictionary;
+    private PlayerMovement playerMovement;
 
     public GameObject inventoryPanel;
     public GameObject slotPrefab;
     public GameObject[] itemPrefabs;
     public int slotCount;
     [SerializeField] private int columns = 5;
+    [SerializeField] private float dropDistance = 0.8f;
 
     private int selectedIndex = -1;
 
@@ -25,6 +27,7 @@ public class InventoryManager : MonoBehaviour
     private void Awake()
     {
         itemDictionary = FindAnyObjectByType<ItemDictionary>();
+        playerMovement = FindAnyObjectByType<PlayerMovement>();
     }
 
     private void Update()
@@ -35,6 +38,7 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A)) Navigate(-1);
         if (Input.GetKeyDown(KeyCode.S)) Navigate(columns);
         if (Input.GetKeyDown(KeyCode.W)) Navigate(-columns);
+        if (Input.GetKeyDown(KeyCode.G)) DropSelectedItem();
     }
 
     private int GetColumns()
@@ -67,6 +71,26 @@ public class InventoryManager : MonoBehaviour
 
         int next = Mathf.Min(nextRow * cols + nextCol, count - 1);
         SetSelectedSlot(next);
+    }
+
+    private void DropSelectedItem()
+    {
+        if (selectedIndex < 0 || playerMovement == null) return;
+
+        Slot slot = inventoryPanel.transform.GetChild(selectedIndex).GetComponent<Slot>();
+        if (slot == null || slot.currentItem == null) return;
+
+        Item item = slot.currentItem.GetComponent<Item>();
+        GameObject prefab = itemDictionary.GetItemPrefab(item.ID);
+        if (prefab == null) return;
+
+        Vector2 dropPosition = (Vector2)playerMovement.transform.position + Random.insideUnitCircle.normalized * dropDistance;
+
+        GameObject dropped = Instantiate(prefab, dropPosition, Quaternion.identity);
+        dropped.name = item.name;
+
+        Destroy(slot.currentItem);
+        slot.currentItem = null;
     }
 
     private void SetSelectedSlot(int index)
