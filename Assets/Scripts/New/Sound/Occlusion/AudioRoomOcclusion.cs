@@ -69,14 +69,14 @@ public class AudioRoomOcclusion : MonoBehaviour
     //Slightly quieter sound used for direct connections with open doors
     private void ApplyMuffledSound()
     {
-        audioSource.volume = 0.65f;
-        lowPass.cutoffFrequency = 3500f;
+        audioSource.volume = 1f;
+        lowPass.cutoffFrequency = 6500f; //was 3500
     }
 
     //Very quiet sound used if rooms have no direct connection or doors are closed
     private void ApplyHeavyMuffle()
     {
-        audioSource.volume = 0.35f;
+        audioSource.volume = 1f;
         lowPass.cutoffFrequency = 1500f;
     }
 }

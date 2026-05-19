@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         footstepAudioSource = GameObject.Find("FootstepProxy").GetComponent<AudioSource>();
+
+        footstepAudioSource.enabled = false;
     }
 
     void FixedUpdate()
