@@ -35541,7 +35541,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "WASD       -    MOVEMENT\nTAB \t\t  -    INVENTORY\nE                     
-    -    INTERACTION\nSPACE   -    THROW\n123456   -    HOTBAR"
+    -    INTERACTION\nG                      -    DROP ITEM\nSPACE   -    THROW\n123456  
+    -    HOTBAR"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2444dea43ce72c43ae371afa822c467, type: 2}
   m_sharedMaterial: {fileID: -6321616471852375268, guid: e2444dea43ce72c43ae371afa822c467, type: 2}
@@ -41866,6 +41867,7 @@ MonoBehaviour:
   equippedItemPositionLeft: {fileID: 1378614106}
   throwSpeed: 8
   throwDistance: 5
+  dropDistance: 0.8
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
