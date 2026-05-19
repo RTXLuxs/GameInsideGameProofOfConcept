@@ -81,5 +81,8 @@ public class PlayerMovement : MonoBehaviour
     public void DisableControls()
     {
         canMove = false;
+        moveInput = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+        footstepAudioSource.enabled = false;
     }
 }
