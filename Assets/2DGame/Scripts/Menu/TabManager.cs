@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,26 +6,26 @@ public class TabManager : MonoBehaviour
     public Image[] tabImages;
     public GameObject[] pages;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int currentIndex;
+
     void Start()
     {
         ActivateTab(0);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+            ActivateTab((currentIndex + 1) % tabImages.Length);
+    }
+
     public void ActivateTab(int index)
     {
+        currentIndex = index;
         for (int i = 0; i < tabImages.Length; i++)
         {
-            if (i == index)
-            {
-                tabImages[i].color = Color.white;
-                pages[i].SetActive(true);
-            }
-            else
-            {
-                tabImages[i].color = Color.gray;
-                pages[i].SetActive(false);
-            }
+            tabImages[i].color = i == index ? Color.white : Color.gray;
+            pages[i].SetActive(i == index);
         }
     }
 }
