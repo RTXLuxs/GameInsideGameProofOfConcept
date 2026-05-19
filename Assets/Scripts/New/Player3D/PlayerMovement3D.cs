@@ -35,6 +35,12 @@ public class PlayerMovement3D : MonoBehaviour
     private Vector2 movement; //Raw movement input
     private Vector2 aim; //Raw aim input
 
+    [Header("Gravity")]
+    public float gravity = -9.81f;
+
+    private float verticalVelocity;
+
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -50,6 +56,7 @@ public class PlayerMovement3D : MonoBehaviour
         GetInputs();
         Move();
         Look();
+        ApplyGravity();
     }
 
     //Assings variables to UserInput equivalent; Simplifies referencing
@@ -143,5 +150,28 @@ public class PlayerMovement3D : MonoBehaviour
         value = Mathf.Pow(value, aimExponent);
 
         return value * sign;
+    }
+
+    private void ApplyGravity()
+    {
+        // Prevent infinite downward buildup
+        if (controller.isGrounded &&
+            verticalVelocity < 0)
+        {
+            verticalVelocity = -2f;
+        }
+
+        // Apply gravity acceleration
+        verticalVelocity +=
+            gravity * Time.deltaTime;
+
+        Vector3 gravityMove =
+            Vector3.up *
+            verticalVelocity;
+
+        controller.Move(
+            gravityMove *
+            Time.deltaTime
+        );
     }
 }
