@@ -4,18 +4,28 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject menuCanvas;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private PlayerMovement playerMovement;
+
     void Start()
     {
+        playerMovement = FindAnyObjectByType<PlayerMovement>();
         menuCanvas.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            menuCanvas.SetActive(!menuCanvas.activeSelf);
+            bool opening = !menuCanvas.activeSelf;
+            menuCanvas.SetActive(opening);
+
+            if (playerMovement != null)
+            {
+                if (opening)
+                    playerMovement.DisableControls();
+                else
+                    playerMovement.EnableControls();
+            }
         }
     }
 }

@@ -48,11 +48,23 @@ public class HotbarManager : MonoBehaviour
                SelectItemInSlot(i);
         }
 
+        if (Keyboard.current[Key.RightArrow].wasPressedThisFrame)
+            CycleSelection(1);
+
+        if (Keyboard.current[Key.LeftArrow].wasPressedThisFrame)
+            CycleSelection(-1);
+
         if (Keyboard.current[Key.Space].wasPressedThisFrame)
             ThrowSelectedItem();
 
         if (Keyboard.current[Key.G].wasPressedThisFrame)
             DropSelectedItem();
+    }
+
+    private void CycleSelection(int direction)
+    {
+        int next = (selectedSlotIndex + direction + slotCount) % slotCount;
+        SelectItemInSlot(next);
     }
 
     private void UpdateLastMoveDirection()
