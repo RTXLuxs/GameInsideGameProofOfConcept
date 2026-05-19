@@ -31,8 +31,8 @@ public class HotbarManager : MonoBehaviour
         hotbarKeys = new Key[slotCount];
         for (int i = 0; i < slotCount; i++)
         {
-            // Map hotbar keys to 1, 2, 3, etc., with the last slot mapped to 0
-            hotbarKeys[i] = i < (slotCount - 1) ? (Key)((int)Key.Digit1 + i) : Key.Digit0;
+            // Map hotbar keys to 1, 2, 3, etc., with the last slot mapped to 6
+            hotbarKeys[i] = i < (slotCount - 1) ? (Key)((int)Key.Digit1 + i) : Key.Digit6;
         }
     }
 
@@ -48,11 +48,23 @@ public class HotbarManager : MonoBehaviour
                SelectItemInSlot(i);
         }
 
+        if (Keyboard.current[Key.RightArrow].wasPressedThisFrame)
+            CycleSelection(1);
+
+        if (Keyboard.current[Key.LeftArrow].wasPressedThisFrame)
+            CycleSelection(-1);
+
         if (Keyboard.current[Key.Space].wasPressedThisFrame)
             ThrowSelectedItem();
 
         if (Keyboard.current[Key.G].wasPressedThisFrame)
             DropSelectedItem();
+    }
+
+    private void CycleSelection(int direction)
+    {
+        int next = (selectedSlotIndex + direction + slotCount) % slotCount;
+        SelectItemInSlot(next);
     }
 
     private void UpdateLastMoveDirection()
@@ -93,8 +105,7 @@ public class HotbarManager : MonoBehaviour
         GameObject prefab = itemDictionary.GetItemPrefab(item.ID);
         if (prefab == null) return;
 
-        Vector2 facing = lastMoveDirection != Vector2.zero ? lastMoveDirection : Vector2.down;
-        Vector2 dropPosition = (Vector2)playerMovement.transform.position + facing * dropDistance;
+        Vector2 dropPosition = (Vector2)playerMovement.transform.position + Random.insideUnitCircle.normalized * dropDistance;
 
         GameObject dropped = Instantiate(prefab, dropPosition, Quaternion.identity);
         dropped.name = item.name;
