@@ -63,6 +63,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Respawn()
+    {
+        moveInput = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+        transform.position = Vector3.zero;
+    }
+
     public void EnableControls()
     {
         canMove = true;
