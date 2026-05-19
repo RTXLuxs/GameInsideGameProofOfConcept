@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     private ItemDictionary itemDictionary;
     private PlayerMovement playerMovement;
+    private HotbarManager hotbarManager;
 
     public GameObject inventoryPanel;
     public GameObject slotPrefab;
@@ -28,6 +29,7 @@ public class InventoryManager : MonoBehaviour
     {
         itemDictionary = FindAnyObjectByType<ItemDictionary>();
         playerMovement = FindAnyObjectByType<PlayerMovement>();
+        hotbarManager = FindAnyObjectByType<HotbarManager>();
     }
 
     private void Update()
@@ -39,6 +41,15 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)) Navigate(columns);
         if (Input.GetKeyDown(KeyCode.W)) Navigate(-columns);
         if (Input.GetKeyDown(KeyCode.G)) DropSelectedItem();
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                SwapWithHotbar(i);
+                break;
+            }
+        }
     }
 
     private int GetColumns()
@@ -71,6 +82,50 @@ public class InventoryManager : MonoBehaviour
 
         int next = Mathf.Min(nextRow * cols + nextCol, count - 1);
         SetSelectedSlot(next);
+    }
+
+    private void SwapWithHotbar(int hotbarIndex)
+    {
+        if (selectedIndex < 0 || hotbarManager == null) return;
+
+        Slot invSlot = inventoryPanel.transform.GetChild(selectedIndex).GetComponent<Slot>();
+        if (invSlot == null || invSlot.currentItem == null) return;
+
+        Slot hotbarSlot = hotbarManager.hotbarPanel.transform.GetChild(hotbarIndex).GetComponent<Slot>();
+        if (hotbarSlot == null) return;
+
+        int invItemID = invSlot.currentItem.GetComponent<Item>().ID;
+        int hotbarItemID = hotbarSlot.currentItem != null ? hotbarSlot.currentItem.GetComponent<Item>().ID : -1;
+
+        Destroy(invSlot.currentItem);
+        invSlot.currentItem = null;
+
+        if (hotbarSlot.currentItem != null)
+        {
+            Destroy(hotbarSlot.currentItem);
+            hotbarSlot.currentItem = null;
+        }
+
+        // Place inventory item into hotbar slot
+        GameObject hotbarPrefab = itemDictionary.GetItemPrefab(invItemID);
+        if (hotbarPrefab != null)
+        {
+            GameObject newHotbarItem = Instantiate(hotbarPrefab, hotbarSlot.transform);
+            newHotbarItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            hotbarSlot.currentItem = newHotbarItem;
+        }
+
+        // Place old hotbar item into inventory slot
+        if (hotbarItemID != -1)
+        {
+            GameObject invPrefab = itemDictionary.GetItemPrefab(hotbarItemID);
+            if (invPrefab != null)
+            {
+                GameObject newInvItem = Instantiate(invPrefab, invSlot.transform);
+                newInvItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                invSlot.currentItem = newInvItem;
+            }
+        }
     }
 
     private void DropSelectedItem()
