@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [HideInInspector] public bool hasKey = false;
+
     private void Awake()
     {
         if (Instance != null)
