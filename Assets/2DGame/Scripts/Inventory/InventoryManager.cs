@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class InventoryManager : MonoBehaviour
     public GameObject slotPrefab;
     public GameObject[] itemPrefabs;
     public int slotCount;
+    [SerializeField] private int columns = 5;
+
+    private int selectedIndex = -1;
 
     public bool IsInventoryOpen
     {
@@ -23,22 +27,97 @@ public class InventoryManager : MonoBehaviour
         itemDictionary = FindAnyObjectByType<ItemDictionary>();
     }
 
+    private void Update()
+    {
+        if (!IsInventoryOpen) return;
+
+        if (Input.GetKeyDown(KeyCode.D)) Navigate(1);
+        if (Input.GetKeyDown(KeyCode.A)) Navigate(-1);
+        if (Input.GetKeyDown(KeyCode.S)) Navigate(columns);
+        if (Input.GetKeyDown(KeyCode.W)) Navigate(-columns);
+    }
+
+    private int GetColumns()
+    {
+        GridLayoutGroup grid = inventoryPanel.GetComponent<GridLayoutGroup>();
+        if (grid != null && grid.constraint == GridLayoutGroup.Constraint.FixedColumnCount)
+            return grid.constraintCount;
+        return columns;
+    }
+
+    private void Navigate(int delta)
+    {
+        int count = inventoryPanel.transform.childCount;
+        if (count == 0) return;
+
+        int cols = GetColumns();
+        int current = Mathf.Max(selectedIndex, 0);
+        int currentRow = current / cols;
+        int currentCol = current % cols;
+
+        int rows = Mathf.CeilToInt((float)count / cols);
+
+        int nextRow = currentRow;
+        int nextCol = currentCol;
+
+        if (delta == 1)       nextCol = Mathf.Min(currentCol + 1, cols - 1);
+        else if (delta == -1) nextCol = Mathf.Max(currentCol - 1, 0);
+        else if (delta > 1)   nextRow = Mathf.Min(currentRow + 1, rows - 1);
+        else if (delta < -1)  nextRow = Mathf.Max(currentRow - 1, 0);
+
+        int next = Mathf.Min(nextRow * cols + nextCol, count - 1);
+        SetSelectedSlot(next);
+    }
+
+    private void SetSelectedSlot(int index)
+    {
+        int count = inventoryPanel.transform.childCount;
+        for (int i = 0; i < count; i++)
+        {
+            Slot slot = inventoryPanel.transform.GetChild(i).GetComponent<Slot>();
+            if (slot != null) slot.SetHighlight(i == index);
+        }
+        selectedIndex = index;
+    }
+
+    private void ClearSelection()
+    {
+        int count = inventoryPanel.transform.childCount;
+        for (int i = 0; i < count; i++)
+        {
+            Slot slot = inventoryPanel.transform.GetChild(i).GetComponent<Slot>();
+            if (slot != null) slot.SetHighlight(false);
+        }
+        selectedIndex = -1;
+    }
+
     public void OpenInventory()
     {
         if (inventoryPanel != null)
+        {
             inventoryPanel.SetActive(true);
+            SetSelectedSlot(0);
+        }
     }
 
     public void CloseInventory()
     {
         if (inventoryPanel != null)
+        {
+            ClearSelection();
             inventoryPanel.SetActive(false);
+        }
     }
 
     public void ToggleInventory()
     {
         if (inventoryPanel != null)
-            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        {
+            if (inventoryPanel.activeSelf)
+                CloseInventory();
+            else
+                OpenInventory();
+        }
     }
     
     public bool AddItem(GameObject itemPrefab)
