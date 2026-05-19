@@ -17,6 +17,7 @@ public class HotbarManager : MonoBehaviour
 
     [SerializeField] private float throwSpeed = 8f;
     [SerializeField] private float throwDistance = 5f;
+    [SerializeField] private float dropDistance = 0.8f;
     [SerializeField] private LayerMask obstacleLayer;
 
     private Key[] hotbarKeys;
@@ -49,6 +50,9 @@ public class HotbarManager : MonoBehaviour
 
         if (Keyboard.current[Key.Space].wasPressedThisFrame)
             ThrowSelectedItem();
+
+        if (Keyboard.current[Key.G].wasPressedThisFrame)
+            DropSelectedItem();
     }
 
     private void UpdateLastMoveDirection()
@@ -76,6 +80,29 @@ public class HotbarManager : MonoBehaviour
             selectedSlotIndex = -1;
             UnequipCurrentItem();
         }
+    }
+
+    private void DropSelectedItem()
+    {
+        if (selectedSlotIndex < 0 || playerMovement == null) return;
+
+        Slot slot = hotbarPanel.transform.GetChild(selectedSlotIndex).GetComponent<Slot>();
+        if (slot.currentItem == null) return;
+
+        Item item = slot.currentItem.GetComponent<Item>();
+        GameObject prefab = itemDictionary.GetItemPrefab(item.ID);
+        if (prefab == null) return;
+
+        Vector2 facing = lastMoveDirection != Vector2.zero ? lastMoveDirection : Vector2.down;
+        Vector2 dropPosition = (Vector2)playerMovement.transform.position + facing * dropDistance;
+
+        GameObject dropped = Instantiate(prefab, dropPosition, Quaternion.identity);
+        dropped.name = item.name;
+
+        Destroy(slot.currentItem);
+        slot.currentItem = null;
+        selectedSlotIndex = -1;
+        UnequipCurrentItem();
     }
 
     private void ThrowSelectedItem()
