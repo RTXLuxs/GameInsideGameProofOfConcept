@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     private AIPath aiPath;
     private IAstarAI ai;
     private Transform player;
+    private PlayerMovement playerMovement;
     private State state = State.Patrol;
     private int waypointIndex;
     private Vector3 distractionPoint;
@@ -42,7 +43,11 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         var playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null) player = playerObj.transform;
+        if (playerObj != null)
+        {
+            player = playerObj.transform;
+            playerMovement = playerObj.GetComponent<PlayerMovement>();
+        }
 
         GoToCurrentWaypoint();
     }
@@ -136,8 +141,13 @@ public class EnemyController : MonoBehaviour
     private void UpdateChase()
     {
         if (player == null) return;
-        // AIPath's repathRate handles recalculation; just keep destination current
         ai.destination = player.position;
+
+        if (ai.reachedEndOfPath && !ai.pathPending)
+        {
+            if (playerMovement != null) playerMovement.Respawn();
+            EnterPatrol();
+        }
     }
 
     private void UpdateInvestigate()
@@ -170,7 +180,7 @@ public class EnemyController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
-        collision.transform.position = Vector2.zero;
+        if (playerMovement != null) playerMovement.Respawn();
     }
 
     void OnDrawGizmosSelected()
