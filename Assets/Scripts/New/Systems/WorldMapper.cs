@@ -20,6 +20,6 @@ public class WorldMapper : MonoBehaviour
 
     public Vector3 ConvertTo3D(Vector2 position2D)
     {
-        return new Vector3(position2D.x, 0, position2D.y);
+        return new Vector3((position2D.x*0.6f), 0, (position2D.y*0.6f));
     }
 }
