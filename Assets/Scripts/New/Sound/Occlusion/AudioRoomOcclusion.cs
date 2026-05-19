@@ -21,6 +21,11 @@ public class AudioRoomOcclusion : MonoBehaviour
         lowPass = GetComponent<AudioLowPassFilter>();
 
         portals = FindObjectsByType<SoundPortal>();
+
+        if (listener == null)
+        {
+            listener = FindAnyObjectByType<ListenerRoomTracker>();
+        }
     }
 
     private void Update()

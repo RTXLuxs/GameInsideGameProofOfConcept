@@ -22,7 +22,6 @@ public class SoundPortal : MonoBehaviour
         }
 
 
-        Debug.Log(name + " state: " + worldObject.GetState());
         return worldObject.GetState() == WorldObjectState.Open; //If door is open = true
     }
 

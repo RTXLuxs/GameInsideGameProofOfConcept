@@ -95,6 +95,8 @@ public class HotbarManager : MonoBehaviour
 
         GameObject thrown = Instantiate(prefab, spawnPos, Quaternion.identity);
         thrown.AddComponent<ThrownItem>().Init(throwTarget, throwSpeed, obstacleLayer);
+        thrown.GetComponent<ThrownItem>().audioProxy = thrown.GetComponent<Item>().audioProxy;
+        thrown.GetComponent<ThrownItem>().impactClip = thrown.GetComponent<Item>().impactClip;
 
         Destroy(slot.currentItem);
         slot.currentItem = null;

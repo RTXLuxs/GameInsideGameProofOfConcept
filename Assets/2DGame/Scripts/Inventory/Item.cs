@@ -6,6 +6,9 @@ public class Item : MonoBehaviour
     public int ID;
     public string Name;
 
+    public AudioClip impactClip;
+    public GameObject audioProxy;
+
     // Method to handle item pickup logic, can be overridden for specific item types
     public virtual void PickUp()
     {

@@ -11,6 +11,9 @@ public class ThrownItem : MonoBehaviour
     private Collider2D col;
     private bool landed;
 
+    [HideInInspector] public GameObject audioProxy;
+    [HideInInspector] public AudioClip impactClip;
+
     public void Init(Vector2 target, float speed, LayerMask obstacleLayer)
     {
         this.target = target;
@@ -50,8 +53,35 @@ public class ThrownItem : MonoBehaviour
     private void OnLand()
     {
         landed = true;
-        if (col != null) col.enabled = true;
+
+        if (col != null)
+            col.enabled = true;
+
+        // Spawn impact sound
+        PlayImpactSound();
+
+        // Existing event
         Landed?.Invoke(transform.position);
+
         Destroy(this);
+    }
+
+    private void PlayImpactSound()
+    {
+        Vector2 pos2D = transform.position;
+
+        Vector3 pos3D =
+            WorldMapper.Instance.ConvertTo3D(pos2D);
+
+        GameObject emitter =
+            Instantiate(
+                audioProxy,
+                pos3D,
+                Quaternion.identity
+            );
+
+        emitter
+            .GetComponent<ItemAudioProxy>()
+            .Play(impactClip);
     }
 }
