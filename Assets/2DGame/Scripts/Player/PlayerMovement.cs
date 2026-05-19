@@ -81,5 +81,11 @@ public class PlayerMovement : MonoBehaviour
     public void DisableControls()
     {
         canMove = false;
+        moveInput = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+        footstepAudioSource.enabled = false;
+        animator.SetBool("isWalking", false);
+        animator.SetFloat("InputX", 0f);
+        animator.SetFloat("InputY", 0f);
     }
 }

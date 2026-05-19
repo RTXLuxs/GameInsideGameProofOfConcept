@@ -8,6 +8,7 @@ public class InteractionPC : MonoBehaviour
     MouseLook mouseLook;
     SimplePlayerMovement playerMovement;
     PlayerMovement2D playerMovement2D;
+    PlayerMovement minigamePlayerMovement;
 
     public GameObject uiText;
 
@@ -20,6 +21,7 @@ public class InteractionPC : MonoBehaviour
     {
         playerMovement = FindAnyObjectByType<SimplePlayerMovement>();
         playerMovement2D = FindAnyObjectByType<PlayerMovement2D>();
+        minigamePlayerMovement = FindAnyObjectByType<PlayerMovement>();
         mouseLook = FindAnyObjectByType<MouseLook>();
         switchCameras = FindAnyObjectByType<SwitchCameras>();
     }
@@ -50,6 +52,7 @@ public class InteractionPC : MonoBehaviour
             mouseLook.canLook = true;
             playerMovement.canMove = true;
             playerMovement2D.canMove = false;
+            if (minigamePlayerMovement != null) minigamePlayerMovement.DisableControls();
         }
     }
 }
