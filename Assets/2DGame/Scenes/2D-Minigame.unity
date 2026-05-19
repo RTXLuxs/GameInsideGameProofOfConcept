@@ -570,7 +570,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1034236367
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -35055,6 +35055,8 @@ MonoBehaviour:
   - {fileID: 4839150740383658675, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
   - {fileID: 6335247857561911094, guid: 508f68796fe0fdd4c81219c6e08eca5b, type: 3}
   slotCount: 18
+  columns: 5
+  dropDistance: 0.8
 --- !u!1 &734675220
 GameObject:
   m_ObjectHideFlags: 0
@@ -41303,7 +41305,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1025280091
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -42669,7 +42671,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1355292257
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -43103,6 +43105,10 @@ PrefabInstance:
     - target: {fileID: 7670815993392463340, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220731632630630410, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
