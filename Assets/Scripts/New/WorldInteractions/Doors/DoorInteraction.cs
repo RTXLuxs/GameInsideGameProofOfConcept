@@ -13,7 +13,7 @@ public class DoorInteraction : MonoBehaviour, IInteractable
     {
         var state = thisObject.GetState();
 
-        return state == WorldObjectState.Open? "Close Object [E]": "Open Object [E]";
+        return state == WorldObjectState.Open? "Close DOOR [E]": "Open DOOR [E]";
     }
 
     public void Interact()
