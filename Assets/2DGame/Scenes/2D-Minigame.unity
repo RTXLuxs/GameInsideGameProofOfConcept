@@ -34632,6 +34632,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302092401}
     m_Modifications:
+    - target: {fileID: 4669459946767294571, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8527415044402574336, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
       propertyPath: m_Name
       value: Plate_Item (3)
@@ -36880,6 +36884,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302092401}
     m_Modifications:
+    - target: {fileID: 4669459946767294571, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8527415044402574336, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
       propertyPath: m_Name
       value: Plate_Item (4)
@@ -43124,6 +43132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302092401}
     m_Modifications:
+    - target: {fileID: 4669459946767294571, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8527415044402574336, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
       propertyPath: m_Name
       value: Plate_Item (2)
@@ -43226,6 +43238,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302092401}
     m_Modifications:
+    - target: {fileID: 4669459946767294571, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8527415044402574336, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
       propertyPath: m_Name
       value: Plate_Item (1)
@@ -43771,6 +43787,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302092401}
     m_Modifications:
+    - target: {fileID: 4669459946767294571, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8527415044402574336, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
       propertyPath: m_Name
       value: Plate_Item
