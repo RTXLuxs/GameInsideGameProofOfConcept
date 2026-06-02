@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    [SerializeField] private Transform playerSpawnPoint;
+
     private string saveLocation;
     private InventoryManager inventoryManager;
     private HotbarManager hotbarManager;
@@ -79,7 +81,7 @@ public class SaveManager : MonoBehaviour
         // Reset player position
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
-            player.transform.position = Vector3.zero;
+            player.transform.position = playerSpawnPoint != null ? playerSpawnPoint.position : Vector3.zero;
 
         // Reset inventory and hotbar
         inventoryManager?.SetInventoryItems(new List<InventorySaveData>());

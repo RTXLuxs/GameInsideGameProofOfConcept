@@ -57388,6 +57388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315c8891358b2114794df8ab98cf1cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+  playerSpawnPoint: {fileID: 421288443}
   containersInScene: []
 --- !u!114 &730267306
 MonoBehaviour:
