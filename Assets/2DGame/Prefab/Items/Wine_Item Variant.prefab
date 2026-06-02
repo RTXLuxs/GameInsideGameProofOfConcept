@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -6637625671849980511, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5284756159409981420, guid: 64fbb5c8f04830947a5ce0ef5cc0f0de, type: 3}
+      objectReference: {fileID: -6935664862555490956, guid: 64fbb5c8f04830947a5ce0ef5cc0f0de, type: 3}
     - target: {fileID: -6637625671849980511, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2091026561750742769, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -2091026561750742769, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_IsTrigger
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1814205420607991536, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: Name
-      value: Red Wine
+      value: Empty Cup
       objectReference: {fileID: 0}
     - target: {fileID: 1814205420607991536, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: impactClip
@@ -106,11 +106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2561585804784066048, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -953.8495
+      value: -962.75
       objectReference: {fileID: 0}
     - target: {fileID: 2561585804784066048, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -557.72
+      value: -541.35
       objectReference: {fileID: 0}
     - target: {fileID: 2561585804784066048, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 8882036477348033067, guid: d6ded9cccf74c5540b237c336ed544af, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5284756159409981420, guid: 64fbb5c8f04830947a5ce0ef5cc0f0de, type: 3}
+      objectReference: {fileID: -6935664862555490956, guid: 64fbb5c8f04830947a5ce0ef5cc0f0de, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
