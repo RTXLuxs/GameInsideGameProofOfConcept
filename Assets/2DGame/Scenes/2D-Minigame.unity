@@ -13201,8 +13201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: AstarPathfindingProject::Pathfinding.AIPath
   version: 5
-  radius: 1
-  height: 2
+  radius: 0.3
+  height: 1
   canMove: 1
   maxSpeed: 3
   gravity: {x: 0, y: 0, z: 0}
@@ -13286,8 +13286,8 @@ MonoBehaviour:
   patrolSpeed: 1.5
   chaseSpeed: 2.5
   investigateSpeed: 2
-  detectionRadius: 4
-  loseRadius: 6
+  detectionRadius: 3
+  loseRadius: 4.5
   waypoints:
   - {fileID: 824112610}
   - {fileID: 2078896347}
