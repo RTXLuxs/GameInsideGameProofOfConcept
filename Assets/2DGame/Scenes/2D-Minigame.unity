@@ -7838,8 +7838,8 @@ Tilemap:
   - first: {x: 31, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 262
-      m_TileSpriteIndex: 264
+      m_TileIndex: 254
+      m_TileSpriteIndex: 256
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7948,8 +7948,8 @@ Tilemap:
   - first: {x: 31, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 261
-      m_TileSpriteIndex: 263
+      m_TileIndex: 254
+      m_TileSpriteIndex: 256
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8058,8 +8058,8 @@ Tilemap:
   - first: {x: 31, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 260
-      m_TileSpriteIndex: 262
+      m_TileIndex: 254
+      m_TileSpriteIndex: 256
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8128,8 +8128,8 @@ Tilemap:
   - first: {x: 30, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 253
-      m_TileSpriteIndex: 255
+      m_TileIndex: 254
+      m_TileSpriteIndex: 256
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8138,8 +8138,8 @@ Tilemap:
   - first: {x: 31, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 259
-      m_TileSpriteIndex: 261
+      m_TileIndex: 254
+      m_TileSpriteIndex: 256
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9497,10 +9497,10 @@ Tilemap:
     m_RefCount: 1
     m_Data: {fileID: 11400000, guid: d2d8ed2c71b349d439cb3f14960a1f42, type: 2}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 11400000, guid: 57124c8244510a44e823c02b0253c602, type: 2}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 6
     m_Data: {fileID: 11400000, guid: a2130907dca5f324aaf7a83bbf2dd913, type: 2}
   - serializedVersion: 2
     m_RefCount: 1
@@ -9515,16 +9515,16 @@ Tilemap:
     m_RefCount: 1
     m_Data: {fileID: 11400000, guid: b929dedef88c04e4ca25f327e8e8a884, type: 2}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 11400000, guid: 6183d30a6a6215b41a47384ca36abe65, type: 2}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 11400000, guid: b439911dd0a2b5f49867aafec0a5f8d0, type: 2}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 11400000, guid: d5d9fb29de6878f49b9fb8bb919b124b, type: 2}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 11400000, guid: 59c111130c9ce574b91988473a3e96b2, type: 2}
   - serializedVersion: 2
     m_RefCount: 1
@@ -10614,10 +10614,10 @@ Tilemap:
     m_RefCount: 1
     m_Data: {fileID: -1158640204, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 1998138646, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 6
     m_Data: {fileID: -86579981, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
     m_RefCount: 1
@@ -10632,16 +10632,16 @@ Tilemap:
     m_RefCount: 1
     m_Data: {fileID: 769166800, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 810768036, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: -1786627399, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: -846024666, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 0
     m_Data: {fileID: 60989120, guid: 98116f60f8e59574db9ca30d00161001, type: 3}
   - serializedVersion: 2
     m_RefCount: 1
@@ -71323,7 +71323,7 @@ GameObject:
   - component: {fileID: 1424075817}
   - component: {fileID: 1424075816}
   - component: {fileID: 1424075820}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
