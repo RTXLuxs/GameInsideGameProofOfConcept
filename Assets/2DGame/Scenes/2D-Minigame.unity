@@ -3678,8 +3678,8 @@ Transform:
   m_GameObject: {fileID: 174998375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0.409, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1707874786}
@@ -91101,9 +91101,9 @@ MonoBehaviour:
   slotCount: 6
   equippedItemPosition: {fileID: 1326976996}
   equippedItemPositionLeft: {fileID: 1378614106}
-  throwSpeed: 8
-  throwDistance: 5
-  dropDistance: 0.8
+  throwSpeed: 5
+  throwDistance: 2.5
+  dropDistance: 0.4
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -93561,10 +93561,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302092401}
     m_Modifications:
-    - target: {fileID: 4669459946767294571, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
-      propertyPath: ID
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8527415044402574336, guid: 536b631819f36cc40a6acb8622b61e72, type: 3}
       propertyPath: m_Name
       value: Plate_Item
@@ -93721,7 +93717,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3946698106680326398, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.396
+      value: 0.183
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946698106680326398, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.181
       objectReference: {fileID: 0}
     - target: {fileID: 4005999894011627405, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
       propertyPath: pickupPrompt
@@ -93769,7 +93769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6595708068250072603, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.261
+      value: -0.135
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595708068250072603, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.165
       objectReference: {fileID: 0}
     - target: {fileID: 7081120375836038192, guid: efd54faf47954a047ba5621cc2c18d46, type: 3}
       propertyPath: m_Name
