@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Transform spawnPoint;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -72,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         gameOverSource.Play();
         moveInput = Vector2.zero;
         rb.linearVelocity = Vector2.zero;
-        transform.position = Vector3.zero;
+        transform.position = spawnPoint != null ? spawnPoint.position : Vector3.zero;
     }
 
     public void EnableControls()

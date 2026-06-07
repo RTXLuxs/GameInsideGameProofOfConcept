@@ -15,6 +15,10 @@ public class EnemyController : MonoBehaviour
     [Header("Detection")]
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private float loseRadius = 7f;
+    [SerializeField] private float killDistance = 0.6f;
+
+    [Header("Spawn")]
+    [SerializeField] private Transform spawnPoint;
 
     [Header("Waypoints")]
     [SerializeField] private Transform[] waypoints;
@@ -145,8 +149,16 @@ public class EnemyController : MonoBehaviour
 
         if (ai.reachedEndOfPath && !ai.pathPending)
         {
-            if (playerMovement != null) playerMovement.Respawn();
-            EnterPatrol();
+            float dist = Vector2.Distance(transform.position, player.position);
+            if (playerMovement != null && dist <= killDistance)
+            {
+                playerMovement.Respawn();
+                ResetToSpawn();
+            }
+            else
+            {
+                EnterPatrol();
+            }
         }
     }
 
@@ -181,6 +193,14 @@ public class EnemyController : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player")) return;
         if (playerMovement != null) playerMovement.Respawn();
+        ResetToSpawn();
+    }
+
+    private void ResetToSpawn()
+    {
+        if (spawnPoint != null)
+            transform.position = spawnPoint.position;
+        EnterPatrol();
     }
 
     void OnDrawGizmosSelected()
