@@ -9,6 +9,7 @@ public class DoorState2D : MonoBehaviour
 
     private Collider2D col;
     private SpriteRenderer sr;
+    private Bounds cachedBounds;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class DoorState2D : MonoBehaviour
 
         col = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
+        cachedBounds = col.bounds;
     }
 
     private void OnEnable()
@@ -44,17 +46,11 @@ public class DoorState2D : MonoBehaviour
 
     private void ApplyState()
     {
-        bool isOpen =
-            thisObject.GetState()
-            == WorldObjectState.Open;
-
-        // Get bounds BEFORE disabling collider
-        Bounds bounds = col.bounds;
+        bool isOpen = thisObject.GetState() == WorldObjectState.Open;
 
         col.enabled = !isOpen;
         sr.enabled = !isOpen;
 
-        // Update A* graph
-        UpdateAstarGrid.Instance.GridUpdate(bounds);
+        UpdateAstarGrid.Instance.GridUpdate(cachedBounds);
     }
 }

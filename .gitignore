@@ -13,6 +13,9 @@
 /.[Cc]laude/
 *.log
 
+# Ignore Font changes for Normal Font in 2D mini game
+Assets/2DGame/Fonts/NormalFont SDF.asset
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
