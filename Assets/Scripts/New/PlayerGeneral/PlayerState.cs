@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public static PlayerState Instance;
-    private PlayerMovement3D movement3D;
+    private PlayerMovementWheelchair movement3D;
     private PlayerMovement movement2D;
 
     [HideInInspector] public bool isPCMode = false;
@@ -18,7 +18,7 @@ public class PlayerState : MonoBehaviour
 
         Instance = this;
 
-        movement3D = FindAnyObjectByType<PlayerMovement3D>();
+        movement3D = FindAnyObjectByType<PlayerMovementWheelchair>();
     }
 
     private void Start()
@@ -28,6 +28,7 @@ public class PlayerState : MonoBehaviour
 
     public void EnterPC()
     {
+        SwitchCameras.Instance.SwitchToDesk();
         movement3D.DisableControls();
         movement2D.EnableControls();
         isPCMode = true;
@@ -35,18 +36,15 @@ public class PlayerState : MonoBehaviour
 
     public void ExitPC()
     {
-        if (UserInput.instance.pausePressed)
-        {
-            SwitchCameras.Instance.SwitchToFPS();
-            movement3D.EnableControls();
-            movement2D.DisableControls();
-            isPCMode = false;
-        }
+        SwitchCameras.Instance.SwitchToFPS();
+        movement3D.EnableControls();
+        movement2D.DisableControls();
+        isPCMode = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ExitPC();
+        //ExitPC();
     }
 }

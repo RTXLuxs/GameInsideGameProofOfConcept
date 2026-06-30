@@ -4,7 +4,7 @@ using UnityEngine;
 public class DeskInteraction : MonoBehaviour
 {
     SwitchCameras switchCameras;
-    PlayerMovement3D playerMovement3D;
+    PlayerMovementWheelchair playerMovement3D;
     PlayerMovement2D playerMovement2D;
 
     public GameObject uiText;
@@ -16,7 +16,7 @@ public class DeskInteraction : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerMovement3D = FindAnyObjectByType<PlayerMovement3D>();
+        playerMovement3D = FindAnyObjectByType<PlayerMovementWheelchair>();
         playerMovement2D = FindAnyObjectByType<PlayerMovement2D>();
         switchCameras = FindAnyObjectByType<SwitchCameras>();
     }

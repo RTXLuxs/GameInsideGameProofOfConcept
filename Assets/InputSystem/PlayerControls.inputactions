@@ -34,6 +34,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Tablet",
+                    "type": "Button",
+                    "id": "26a15939-d5cc-447e-b9cc-2612505de3f0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Exit/Pause",
                     "type": "Button",
                     "id": "aa296ce6-82fb-4683-8dc1-4aa63b167b77",
@@ -151,6 +160,28 @@
                     "processors": "",
                     "groups": ";MnK",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "536b3e88-6c5d-420e-9517-7062a8b2c612",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Tablet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e800d1d0-920e-4ace-972a-d08540dfcc9a",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";MnK",
+                    "action": "Tablet",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
