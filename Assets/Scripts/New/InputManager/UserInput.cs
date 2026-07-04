@@ -15,10 +15,12 @@ public class UserInput : MonoBehaviour
     private InputAction interactAction;
     private InputAction pauseAction;
     private InputAction tabletAction;
+    private InputAction mouseinteractAction;
 
     //Input variables (READ ONLY); Allows usage outside of this script
     public Vector2 moveInput { get; private set; }
     public Vector2 aimInput { get; private set; }
+    public bool mouseInteractHeld { get; private set; }
     public bool interactPressed { get; private set; }
     public bool pausePressed { get; private set; }
     public bool tabletPressed { get; private set; }
@@ -58,6 +60,7 @@ public class UserInput : MonoBehaviour
         interactAction = playerInput.actions["Interact"];
         pauseAction = playerInput.actions["Exit/Pause"];
         tabletAction = playerInput.actions["Tablet"];
+        mouseinteractAction = playerInput.actions["MouseInteract"];
     }
 
     //Keeps variables updated with current input state
@@ -70,6 +73,7 @@ public class UserInput : MonoBehaviour
         interactPressed = interactAction.WasPressedThisFrame();
         pausePressed = pauseAction.WasPressedThisFrame();
         tabletPressed = tabletAction.WasPressedThisFrame();
+        mouseInteractHeld = mouseinteractAction.IsPressed();
 
         //Assigns correct sensitivity based on input
         if (isGamepad)

@@ -34,6 +34,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "MouseInteract",
+                    "type": "Button",
+                    "id": "a7256a3e-f516-4ecd-86f3-9574eaae463f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Tablet",
                     "type": "Button",
                     "id": "26a15939-d5cc-447e-b9cc-2612505de3f0",
@@ -160,6 +169,17 @@
                     "processors": "",
                     "groups": ";MnK",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a517291-8159-4fdf-b547-53e47c197ee9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";MnK",
+                    "action": "MouseInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
