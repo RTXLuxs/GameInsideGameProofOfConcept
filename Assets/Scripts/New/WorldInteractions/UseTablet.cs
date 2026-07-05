@@ -13,7 +13,7 @@ public class UseTablet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UserInput.instance.tabletPressed)
+        if (UserInput.Instance.tabletPressed)
         {
             if(tabletAnimator.GetBool("Watching") == true)
             {

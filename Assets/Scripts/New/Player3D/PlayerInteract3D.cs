@@ -19,7 +19,7 @@ public class PlayerInteract3D : MonoBehaviour
         
         DetectInteraction();
 
-        if (UserInput.instance.interactPressed)
+        if (UserInput.Instance.interactPressed)
         {
             Interact();
         }

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class UserInput : MonoBehaviour
 {
     //Makes this script a singleton
-    public static UserInput instance;
+    public static UserInput Instance;
 
     //Reference to PlayerInput component found on player
     private PlayerInput playerInput;
@@ -37,9 +37,9 @@ public class UserInput : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
 
         playerInput = GetComponent<PlayerInput>();

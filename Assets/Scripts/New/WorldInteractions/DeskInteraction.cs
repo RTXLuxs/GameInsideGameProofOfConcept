@@ -33,14 +33,14 @@ public class DeskInteraction : MonoBehaviour
             //uiText.SetActive(false);
         }
 
-        if (UserInput.instance.interactPressed && Vector3.Distance(pc.position, player.position) <= range)
+        if (UserInput.Instance.interactPressed && Vector3.Distance(pc.position, player.position) <= range)
         {
             switchCameras.SwitchToDesk();
             playerMovement3D.DisableControls();
             playerMovement2D.canMove = true;
         }
 
-        if (UserInput.instance.pausePressed)
+        if (UserInput.Instance.pausePressed)
         {
             switchCameras.SwitchToFPS();
             playerMovement3D.EnableControls();

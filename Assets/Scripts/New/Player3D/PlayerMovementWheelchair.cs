@@ -80,8 +80,8 @@ public class PlayerMovementWheelchair : MonoBehaviour
     //Assings variables to UserInput equivalent; Simplifies referencing
     private void GetInputs()
     {
-        movement = UserInput.instance.moveInput;
-        aim = UserInput.instance.aimInput;
+        movement = UserInput.Instance.moveInput;
+        aim = UserInput.Instance.aimInput;
     }
 
     //Used for player Movement
@@ -145,7 +145,7 @@ public class PlayerMovementWheelchair : MonoBehaviour
         {
             Vector2 finalLookInput; //Variables that is used in aiming after calculations
 
-            if (UserInput.instance.isGamepad)
+            if (UserInput.Instance.isGamepad)
             {
                 //Adjusts sensitivity curve and adds deadzone
                 Vector2 processedInput = ProcessControllerLook(aim);
@@ -154,11 +154,11 @@ public class PlayerMovementWheelchair : MonoBehaviour
                 currentLook = Vector2.SmoothDamp(currentLook, processedInput, ref currentLookVelocity, lookSmoothTime);
 
                 //Combines calculations with sensitivity
-                finalLookInput = currentLook * UserInput.instance.sensitivity * Time.deltaTime;
+                finalLookInput = currentLook * UserInput.Instance.sensitivity * Time.deltaTime;
             }
             else
             {
-                finalLookInput = aim * UserInput.instance.sensitivity * Time.deltaTime; //Value used when using MnK
+                finalLookInput = aim * UserInput.Instance.sensitivity * Time.deltaTime; //Value used when using MnK
             }
 
             if (Mathf.Abs(finalLookInput.x) > 0.01f ||
@@ -217,7 +217,7 @@ public class PlayerMovementWheelchair : MonoBehaviour
     private Vector2 ProcessControllerLook(Vector2 input)
     {
         //Adds deadzone
-        if (input.magnitude < UserInput.instance.deadzone)
+        if (input.magnitude < UserInput.Instance.deadzone)
         {
             return Vector2.zero;
         }

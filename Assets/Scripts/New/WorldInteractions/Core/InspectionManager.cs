@@ -47,8 +47,8 @@ public class InspectionManager : MonoBehaviour
 
         RotateObject();
 
-        if (UserInput.instance.interactPressed ||
-            UserInput.instance.pausePressed)
+        if (UserInput.Instance.interactPressed ||
+            UserInput.Instance.pausePressed)
         {
             StopInspection();
         }
@@ -129,16 +129,16 @@ public class InspectionManager : MonoBehaviour
     {
         Vector2 input = Vector2.zero;
 
-        if (UserInput.instance.isGamepad)
+        if (UserInput.Instance.isGamepad)
         {
-            input = UserInput.instance.aimInput;
+            input = UserInput.Instance.aimInput;
         }
         else
         {
-            if (!UserInput.instance.mouseInteractHeld)
+            if (!UserInput.Instance.mouseInteractHeld)
                 return;
 
-            input = UserInput.instance.aimInput;
+            input = UserInput.Instance.aimInput;
         }
 
         rotationPivot.Rotate(
