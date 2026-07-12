@@ -41,13 +41,15 @@ public class PlayerInventory3D : MonoBehaviour
         return true;
     }
 
-    public bool RemoveItem(ItemDefinition item)
+    public bool TryRemoveItem(ItemDefinition item)
     {
         if (item == null)
             return false;
 
         if (!ownedItems.Remove(item))
             return false;
+
+        Debug.Log($"Inventory: Removed '{item.ItemName}'.");
 
         OnItemRemoved?.Invoke(item);
 

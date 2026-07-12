@@ -36,4 +36,12 @@ public class InteractionRequirements : MonoBehaviour
         failureReason = string.Empty;
         return true;
     }
+
+    public void NotifyRequirementsSatisfied()
+    {
+        foreach (RequirementBase requirement in requirements)
+        {
+            requirement.OnSatisfied();
+        }
+    }
 }

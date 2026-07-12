@@ -18,6 +18,7 @@ public class ItemDefinition : ScriptableObject
 
     [Header("Settings")]
     [SerializeField] private bool importantItem = true;
+    [SerializeField] private bool consumable = false;
 
     public string ItemID => itemID;
 
@@ -30,4 +31,6 @@ public class ItemDefinition : ScriptableObject
     public string Description => description;
 
     public bool ImportantItem => importantItem;
+
+    public bool Consumable => consumable;
 }

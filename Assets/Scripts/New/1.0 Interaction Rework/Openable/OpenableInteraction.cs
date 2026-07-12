@@ -38,6 +38,8 @@ public class OpenableInteraction : MonoBehaviour, IInteractable
                 Debug.Log(failureReason);
                 return;
             }
+
+            requirements?.NotifyRequirementsSatisfied();
         }
 
         openableState.Toggle();

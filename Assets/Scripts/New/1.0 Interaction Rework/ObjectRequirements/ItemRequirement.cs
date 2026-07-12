@@ -35,4 +35,12 @@ public class ItemRequirement : RequirementBase
 
         return false;
     }
+
+    public override void OnSatisfied()
+    {
+        if (!requiredItem.Consumable)
+            return;
+
+        PlayerInventory3D.Instance.TryRemoveItem(requiredItem);
+    }
 }

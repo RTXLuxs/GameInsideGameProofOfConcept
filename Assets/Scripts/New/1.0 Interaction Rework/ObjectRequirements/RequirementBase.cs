@@ -13,4 +13,9 @@ public abstract class RequirementBase : MonoBehaviour, IRequirement
     }
 
     protected abstract bool CheckRequirement(out string failureReason);
+
+    public virtual void OnSatisfied()
+    {
+        // Default: nothing happens.
+    }
 }
