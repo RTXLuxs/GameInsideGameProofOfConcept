@@ -18,3 +18,4 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: Item used for Testing
   importantItem: 1
+  consumable: 1
