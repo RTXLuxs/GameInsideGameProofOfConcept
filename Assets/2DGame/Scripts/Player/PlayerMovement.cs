@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canMove = false;
 
+    // When true, PushPullController drives the Rigidbody directly (grid-cell push/pull),
+    // so PlayerMovement stops applying its own velocity. Input is still read for direction/animation.
+    [HideInInspector] public bool gridLocked = false;
+
     public Vector2 MoveInput => moveInput;
 
     private AudioSource footstepAudioSource;
@@ -31,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // While attached to a pushable object, the PushPullController moves the body.
+        if (gridLocked) return;
+
         rb.linearVelocity = moveInput * moveSpeed;
     }
 
