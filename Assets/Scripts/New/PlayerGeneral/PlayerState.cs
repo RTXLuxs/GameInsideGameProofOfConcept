@@ -8,6 +8,8 @@ public class PlayerState : MonoBehaviour
 
     [HideInInspector] public bool isPCMode = false;
 
+    [HideInInspector] public bool bedridden = true;
+
     private void Awake()
     {
         if (Instance != null)
@@ -37,7 +39,13 @@ public class PlayerState : MonoBehaviour
     public void ExitPC()
     {
         SwitchCameras.Instance.SwitchToFPS();
-        movement3D.EnableControls();
+        if (!bedridden)
+        {
+            movement3D.EnableControls();
+        }else if (bedridden)
+        {
+            movement3D.LookOnly();
+        }
         movement2D.DisableControls();
         isPCMode = false;
     }
