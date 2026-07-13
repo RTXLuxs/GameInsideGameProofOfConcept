@@ -1,10 +1,7 @@
-using System;
 using UnityEngine;
 
 public class ThrownItem : MonoBehaviour
 {
-    public static event Action<Vector2> Landed;
-
     private Vector2 target;
     private float speed;
     private LayerMask obstacleLayer;
@@ -60,8 +57,8 @@ public class ThrownItem : MonoBehaviour
         // Spawn impact sound
         PlayImpactSound();
 
-        // Existing event
-        Landed?.Invoke(transform.position);
+        // Lure the enemy to where the item landed
+        DistractionSound.Emit(transform.position);
 
         Destroy(this);
     }
