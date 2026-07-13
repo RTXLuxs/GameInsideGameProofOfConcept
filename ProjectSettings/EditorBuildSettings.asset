@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/3D/OutdoorsScene.unity
+    path: Assets/Scenes/3D/NewScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
   - enabled: 1
     path: Assets/2DGame/Scenes/2D-Minigame.unity
