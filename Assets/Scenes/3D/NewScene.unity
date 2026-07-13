@@ -4681,9 +4681,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelchairInteraction
   interactionText: 'Sit in Wheelchair [E]'
-  animator: {fileID: 0}
+  animator: {fileID: 1396074851}
   triggerName: SitInWheelchair
-  playerWheelchair: {fileID: 658293129}
+  playerIntroEvents: {fileID: 1396074852}
 --- !u!4 &946501181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5251065365702510141, guid: a0e6907582565b44eb49c1e7874e22e3, type: 3}
@@ -6374,6 +6374,7 @@ GameObject:
   - component: {fileID: 1396074849}
   - component: {fileID: 1396074850}
   - component: {fileID: 1396074851}
+  - component: {fileID: 1396074852}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -6605,7 +6606,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396074839}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d53695f2d5700fb49ae058acabb0669f, type: 2}
   m_CullingMode: 0
@@ -6619,6 +6620,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1396074852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396074839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930699b1a73b8f5438519568d03c806f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerIntroEvents
+  playerWheelchair: {fileID: 658293129}
+  animator: {fileID: 1396074851}
 --- !u!1 &1412218556
 GameObject:
   m_ObjectHideFlags: 0
@@ -6847,6 +6862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerState
   isPCMode: 0
+  bedridden: 1
 --- !u!114 &1462601000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7584,12 +7600,12 @@ GameObject:
   - component: {fileID: 1598776616}
   - component: {fileID: 1598776615}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: WheelchairEndpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1598776615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7871,6 +7887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WheelchairCutsceneTrigger
   wheelchairAnimator: {fileID: 920651484}
   cameraAnimator: {fileID: 387521040}
+  tabletAnimator: {fileID: 631503331}
   animationNameWheelchair: Cutscene_BedroomEntrance_Wheelchair
   animationNameCamera: Cutscene_BedroomEntrance_Cam
 --- !u!65 &1721739452

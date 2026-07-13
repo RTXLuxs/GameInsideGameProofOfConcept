@@ -20,6 +20,8 @@ public class PlayerIntroEvents : MonoBehaviour
         {
             playerWheelchair.SetActive(true);
             animator.enabled = false;
+            PlayerState.Instance.bedridden = false;
+            PlayerState.Instance.EnableControls();
         }
 
         if (worldWheelchair != null)
