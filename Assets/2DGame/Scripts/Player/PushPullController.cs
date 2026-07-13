@@ -187,6 +187,7 @@ public class PushPullController : MonoBehaviour
 
         Vector2 playerStart = playerRb.position;
         Vector2 boxStart = attached.Body.position;
+        Vector2 boxPrev = boxStart;
 
         float t = 0f;
         while (t < stepDuration)
@@ -195,14 +196,20 @@ public class PushPullController : MonoBehaviour
             float k = Mathf.Clamp01(t / stepDuration);
             k = k * k * (3f - 2f * k); // smoothstep for a soft ease in/out
 
+            Vector2 boxNow = Vector2.Lerp(boxStart, boxTarget, k);
             playerRb.MovePosition(Vector2.Lerp(playerStart, playerTarget, k));
-            attached.Body.MovePosition(Vector2.Lerp(boxStart, boxTarget, k));
+            attached.Body.MovePosition(boxNow);
+
+            // Mirror the incremental motion onto any linked 3D object.
+            attached.ReportMoved(boxNow - boxPrev);
+            boxPrev = boxNow;
 
             yield return new WaitForFixedUpdate();
         }
 
         playerRb.MovePosition(playerTarget);
         attached.Body.MovePosition(boxTarget);
+        attached.ReportMoved(boxTarget - boxPrev);
         yield return new WaitForFixedUpdate();
 
         stepping = false;

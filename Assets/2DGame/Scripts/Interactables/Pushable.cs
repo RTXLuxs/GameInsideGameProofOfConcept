@@ -11,6 +11,18 @@ public class Pushable : MonoBehaviour
     public Rigidbody2D Body { get; private set; }
     public Collider2D Col { get; private set; }
 
+    /// <summary>
+    /// Raised whenever the object is moved by the player, carrying the world-space
+    /// delta of this step/frame. A linked 3D object can subscribe to mirror the motion.
+    /// </summary>
+    public event System.Action<Vector2> Moved;
+
+    public void ReportMoved(Vector2 worldDelta)
+    {
+        if (worldDelta != Vector2.zero)
+            Moved?.Invoke(worldDelta);
+    }
+
     private void Awake()
     {
         Col = GetComponent<Collider2D>();
