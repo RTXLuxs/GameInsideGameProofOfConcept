@@ -7,6 +7,7 @@ public class SwitchCameras : MonoBehaviour
 
     public CinemachineCamera fpsCam;
     public CinemachineCamera deskCam;
+    public CinemachineCamera cutsceneCam;
 
     private void Awake()
     {
@@ -23,11 +24,20 @@ public class SwitchCameras : MonoBehaviour
     {
         fpsCam.Priority = 0;
         deskCam.Priority = 10;
+        cutsceneCam.Priority = 0;
     }
 
     public void SwitchToFPS()
     {
         fpsCam.Priority = 10;
         deskCam.Priority = 0;
+        cutsceneCam.Priority = 0;
+    }
+
+    public void SwitchToCutscene()
+    {
+        fpsCam.Priority = 0;
+        deskCam.Priority = 0;
+        cutsceneCam.Priority = 10;
     }
 }

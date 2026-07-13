@@ -42,6 +42,22 @@ public class PlayerState : MonoBehaviour
         isPCMode = false;
     }
 
+    public void DisableControls()
+    {
+        movement3D.DisableControls();
+        movement2D.DisableControls();
+    }
+
+    public void EnableControls()
+    {
+        movement3D.EnableControls();
+    }
+
+    public void LookOnly()
+    {
+        movement3D.LookOnly();
+    }
+
     // Update is called once per frame
     void Update()
     {

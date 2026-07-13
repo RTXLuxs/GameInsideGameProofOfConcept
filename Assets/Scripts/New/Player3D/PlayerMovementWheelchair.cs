@@ -213,6 +213,12 @@ public class PlayerMovementWheelchair : MonoBehaviour
         canLook = false;
     }
 
+    public void LookOnly()
+    {
+        canMove = false;
+        canLook = true;
+    }
+
     //Processes custom controller input behaviour
     private Vector2 ProcessControllerLook(Vector2 input)
     {
