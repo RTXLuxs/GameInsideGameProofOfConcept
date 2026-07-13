@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Models/Player/compact-electric-wheelchair-rigg-100-free.meta
 guid: dd08e25760560f54b81c7b1740f1f54c
+========
+guid: ef6b2bbec4e8a40418c0aa1cc5f7958a
+folderAsset: yes
+>>>>>>>> main:Assets/compact-electric-wheelchair-rigg-100-free/source.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/3D/OldScene.unity.meta
 guid: 5065c85e68391c5429c9439631d513b8
+========
+guid: e692d29f90d67a543a7d1b79c8b737bc
+folderAsset: yes
+>>>>>>>> main:Assets/compact-electric-wheelchair-rigg-100-free.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
