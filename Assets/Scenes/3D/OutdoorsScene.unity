@@ -5896,6 +5896,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2054736152031620047, guid: 2232ade7a1f4ec84ca800c672eb224eb, type: 3}
+--- !u!1 &582504415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4338719435424551589, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
+  m_PrefabInstance: {fileID: 1088690571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &582504425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582504415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71dcf5d59c793f42a9330d4464af5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Furniture3DAnchor
+  furnitureId: Sofa
 --- !u!4 &622050289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3437650075341276604, guid: 99b4367e2112ee84b800d18aad118531, type: 3}
@@ -10139,6 +10157,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7099239835121446233, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 373840793}
+    - targetCorrespondingSourceObject: {fileID: 4338719435424551589, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 582504425}
     - targetCorrespondingSourceObject: {fileID: 5113332990748531828, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 266760267}
