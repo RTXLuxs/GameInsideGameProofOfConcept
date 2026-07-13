@@ -5498,6 +5498,124 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4586173333155396, guid: 00bcf22d5f40f3b48bb25b770265f045, type: 3}
   m_PrefabInstance: {fileID: 1680605866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &498700287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4227768135508642445, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
+  m_PrefabInstance: {fileID: 1088690571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &498700289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498700287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09fe087b4cbcf74f8c9d31fc99efbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LureSoundInteractable
+  interactionText: 'Turn on Microwave [E]'
+  lureId: TV
+  sound: {fileID: 8300000, guid: 7bf32f43b89e7a94bab338eaca948732, type: 3}
+  cooldown: 10
+--- !u!82 &498700290
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498700287}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &501058932
 GameObject:
   m_ObjectHideFlags: 0
@@ -10138,6 +10256,7 @@ PrefabInstance:
     - {fileID: 2330237653063993777, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
     - {fileID: 8092681838832196342, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
     - {fileID: 3573764793719936466, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
+    - {fileID: 3250932843631327285, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 391105216970261344, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
       insertIndex: -1
@@ -10284,6 +10403,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7569938172032662533, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 369010636}
+    - targetCorrespondingSourceObject: {fileID: 4227768135508642445, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 498700290}
+    - targetCorrespondingSourceObject: {fileID: 4227768135508642445, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 498700289}
     - targetCorrespondingSourceObject: {fileID: 2046900371658339046, guid: 40669749a22156946bd8e4b90baaaf5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1570720087}

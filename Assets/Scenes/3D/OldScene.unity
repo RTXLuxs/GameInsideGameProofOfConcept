@@ -12778,6 +12778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SwitchCameras
   fpsCam: {fileID: 1144678567}
   deskCam: {fileID: 1011857951}
+  cutsceneCam: {fileID: 0}
 --- !u!114 &1396074843
 MonoBehaviour:
   m_ObjectHideFlags: 0

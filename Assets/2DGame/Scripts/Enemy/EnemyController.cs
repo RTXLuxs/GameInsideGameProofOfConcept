@@ -56,8 +56,8 @@ public class EnemyController : MonoBehaviour
         GoToCurrentWaypoint();
     }
 
-    void OnEnable()  => ThrownItem.Landed += OnDistractionSound;
-    void OnDisable() => ThrownItem.Landed -= OnDistractionSound;
+    void OnEnable()  => DistractionSound.Emitted += OnDistractionSound;
+    void OnDisable() => DistractionSound.Emitted -= OnDistractionSound;
 
     void Update()
     {
