@@ -57,6 +57,7 @@ public class PlayerMovementWheelchair : MonoBehaviour
 
     private float verticalVelocity;
 
+    public AudioSource wheelchairAudio;
 
     private void Awake()
     {
@@ -93,13 +94,22 @@ public class PlayerMovementWheelchair : MonoBehaviour
         float moveInput = movement.y;
         float turnInput = movement.x;
 
-        // Rotate wheelchair
-        transform.Rotate(
-            Vector3.up *
-            turnInput *
-            turnSpeed *
-            Time.deltaTime
-        );
+        if (moveInput == 0)
+        {
+            wheelchairAudio.enabled = false;
+        }
+        else
+        {
+            wheelchairAudio.enabled = true;
+        }
+
+            // Rotate wheelchair
+            transform.Rotate(
+                Vector3.up *
+                turnInput *
+                turnSpeed *
+                Time.deltaTime
+            );
 
         // Acceleration while moving,
         // deceleration when stopping
