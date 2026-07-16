@@ -18859,7 +18859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Furniture2DLink
   furnitureId: Wheelchair
-  scale: 2
+  scale: 1
   map2DxTo3D: {x: 1, y: 0, z: 0}
   map2DyTo3D: {x: 0, y: 0, z: 1}
 --- !u!50 &1486112817
@@ -19015,7 +19015,7 @@ Transform:
   m_GameObject: {fileID: 1486112815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.23, y: 6.108, z: -0.1}
+  m_LocalPosition: {x: 0.52, y: -1.02, z: -0.1}
   m_LocalScale: {x: 1, y: 0.5427, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
