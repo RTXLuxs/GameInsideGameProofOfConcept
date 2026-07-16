@@ -8,6 +8,7 @@ public class SwitchCameras : MonoBehaviour
     public CinemachineCamera fpsCam;
     public CinemachineCamera deskCam;
     public CinemachineCamera cutsceneCam;
+    [HideInInspector] public CinemachineCamera interactionCamera;
 
     private void Awake()
     {
@@ -25,6 +26,10 @@ public class SwitchCameras : MonoBehaviour
         fpsCam.Priority = 0;
         deskCam.Priority = 10;
         cutsceneCam.Priority = 0;
+        if (interactionCamera != null)
+        {
+            interactionCamera.Priority = 0;
+        }
     }
 
     public void SwitchToFPS()
@@ -32,6 +37,10 @@ public class SwitchCameras : MonoBehaviour
         fpsCam.Priority = 10;
         deskCam.Priority = 0;
         cutsceneCam.Priority = 0;
+        if (interactionCamera != null)
+        {
+            interactionCamera.Priority = 0;
+        }
     }
 
     public void SwitchToCutscene()
@@ -39,5 +48,17 @@ public class SwitchCameras : MonoBehaviour
         fpsCam.Priority = 0;
         deskCam.Priority = 0;
         cutsceneCam.Priority = 10;
+        if (interactionCamera != null)
+        {
+            interactionCamera.Priority = 0;
+        }
+    }
+
+    public void SwitchToInteraction()
+    {
+        interactionCamera.Priority = 10;
+        fpsCam.Priority = 0;
+        deskCam.Priority = 0;
+        cutsceneCam.Priority = 0;
     }
 }

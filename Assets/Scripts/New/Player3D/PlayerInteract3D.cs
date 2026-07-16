@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerInteract3D : MonoBehaviour
 {
-    [Header("Interaction Settigns")]
-    [SerializeField] private float range; //Interaction range
-    [SerializeField] private float sphereRadius; //Size of sphere cast
+    [Header("Interaction Settings")]
+    [SerializeField] private float range;           // Interaction range
+    [SerializeField] private float sphereRadius;    // Size of sphere cast
 
-    private IInteractable currentInteractable; //Stores hit object
+    private IInteractable currentInteractable;      // Stores hit object
 
     private void Update()
     {
@@ -16,7 +16,7 @@ public class PlayerInteract3D : MonoBehaviour
             currentInteractable = null;
             return;
         }
-        
+
         DetectInteraction();
 
         if (UserInput.Instance.interactPressed)
@@ -25,11 +25,11 @@ public class PlayerInteract3D : MonoBehaviour
         }
     }
 
-    void DetectInteraction()
+    private void DetectInteraction()
     {
         currentInteractable = null;
 
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f); //Calculates sceen center
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f);
 
         Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 
@@ -37,20 +37,19 @@ public class PlayerInteract3D : MonoBehaviour
 
         float closestToCenter = float.MaxValue;
 
-        foreach (RaycastHit hit in hits ) //Go through objects hit by raycast
+        foreach (RaycastHit hit in hits)
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>(); //Check object for interaction script
+            // Look for an interactable on this object or any of its parents
+            IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
 
-            if (interactable == null) //Ignore objects without interaction script
+            if (interactable == null)
             {
                 continue;
             }
 
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(hit.point); //Converts 3D hitpoint to screenpoint
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(hit.point);
+            float distanceToCenter = Vector2.Distance(screenCenter, screenPos);
 
-            float distanceToCenter = Vector2.Distance(screenCenter, screenPos); //Calculate distance to center
-
-            //Compare object to previous object and store if closer to center
             if (distanceToCenter < closestToCenter)
             {
                 closestToCenter = distanceToCenter;
@@ -58,7 +57,6 @@ public class PlayerInteract3D : MonoBehaviour
             }
         }
 
-        //Enable or disable UI Text
         if (currentInteractable != null)
         {
             InteractionUI3D.Instance.ShowText(currentInteractable.GetInteractionText());
@@ -69,7 +67,7 @@ public class PlayerInteract3D : MonoBehaviour
         }
     }
 
-    public void Interact()
+    private void Interact()
     {
         currentInteractable?.Interact();
     }
