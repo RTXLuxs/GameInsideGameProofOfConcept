@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SceneManager.LoadScene("2D-Minigame", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Forouzan_2D-Minigame", LoadSceneMode.Additive);
     }
 
     public GameObject targetObjectInMainScene;
