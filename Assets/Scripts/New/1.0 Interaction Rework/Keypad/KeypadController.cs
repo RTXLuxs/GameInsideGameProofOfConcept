@@ -70,7 +70,10 @@ public class KeypadController : MonoBehaviour
             Debug.Log("Correct Code");
             display.ShowMessage("Correct");
             audioSource.PlayOneShot(correctClip);
+            ChairliftState.Instance.codeEntered = true;
             keypadInteraction.ExitKeypad();
+            keypadInteraction.interactionText = "";
+            keypadInteraction.enabled = false;
         }
         else
         {

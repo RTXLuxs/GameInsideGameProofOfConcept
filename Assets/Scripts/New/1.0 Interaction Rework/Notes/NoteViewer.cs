@@ -1,20 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteViewer : MonoBehaviour
 {
-    public static NoteViewer Instance;
+    private NoteInteraction noteInteraction;
+
+    public string interaction;
 
     [SerializeField] private GameObject notePanel;
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
+        noteInteraction = GetComponent<NoteInteraction>();
+        
+        noteInteraction.noteText = interaction;
 
         notePanel.SetActive(false);
     }
@@ -24,6 +23,7 @@ public class NoteViewer : MonoBehaviour
         if (UserInput.Instance.pausePressed)
         {
             Hide();
+            Debug.Log("this");
         }
     }
 
@@ -32,6 +32,10 @@ public class NoteViewer : MonoBehaviour
         notePanel.SetActive(true);
 
         PlayerState.Instance.DisableControls();
+
+        noteInteraction.noteText = "";
+
+        notePanel.GetComponent<Image>().sprite = note;
 
         // TODO:
         // Set the UI Image sprite
@@ -46,6 +50,8 @@ public class NoteViewer : MonoBehaviour
     public void Hide()
     {
         notePanel.SetActive(false);
+
+        noteInteraction.noteText = interaction;
 
         PlayerState.Instance.EnableControls();
         // TODO:

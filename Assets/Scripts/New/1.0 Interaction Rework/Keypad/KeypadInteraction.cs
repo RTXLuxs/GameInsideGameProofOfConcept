@@ -5,7 +5,7 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 public class KeypadInteraction : MonoBehaviour, IInteractable
 {
     [Header("Interaction")]
-    [SerializeField] private string interactionText = "Use Keypad [E]";
+    [SerializeField] public string interactionText = "Use Keypad [E]";
 
     [SerializeField] private CinemachineCamera keypadCam;
 

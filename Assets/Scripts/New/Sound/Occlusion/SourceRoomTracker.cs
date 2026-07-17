@@ -12,6 +12,7 @@ public class SourceRoomTracker : MonoBehaviour
         if (room != null)
         {
             currentRoom = room;
+            Debug.Log(gameObject.name + room);
         }
     }
 }

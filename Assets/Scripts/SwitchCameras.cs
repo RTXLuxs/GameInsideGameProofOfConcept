@@ -10,6 +10,8 @@ public class SwitchCameras : MonoBehaviour
     public CinemachineCamera cutsceneCam;
     [HideInInspector] public CinemachineCamera interactionCamera;
 
+    private PlayerInteract3D interact3D;
+
     private void Awake()
     {
         if (Instance != null)
@@ -19,6 +21,8 @@ public class SwitchCameras : MonoBehaviour
         }
 
         Instance = this;
+
+        interact3D = FindAnyObjectByType<PlayerInteract3D>();
     }
 
     public void SwitchToDesk()
@@ -41,6 +45,7 @@ public class SwitchCameras : MonoBehaviour
         {
             interactionCamera.Priority = 0;
         }
+        interact3D.enabled = true;
     }
 
     public void SwitchToCutscene()
@@ -52,6 +57,7 @@ public class SwitchCameras : MonoBehaviour
         {
             interactionCamera.Priority = 0;
         }
+        interact3D.enabled = false;
     }
 
     public void SwitchToInteraction()
