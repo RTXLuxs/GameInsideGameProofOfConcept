@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerProximity : MonoBehaviour
 {
@@ -40,8 +41,10 @@ public class PlayerProximity : MonoBehaviour
         {
             Debug.Log("Player Died");
 
-            // TODO:
-            // Kill player
+            Destroy(GameManager.Instance.gameObject);
+            Destroy(WorldState.Instance.gameObject);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
