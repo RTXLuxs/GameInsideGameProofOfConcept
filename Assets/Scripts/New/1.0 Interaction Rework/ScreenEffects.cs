@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class ScreenEffects : MonoBehaviour
 {
@@ -15,7 +16,22 @@ public class ScreenEffects : MonoBehaviour
     [SerializeField] private float maxDangerScale = 1.4f;
     [SerializeField] private float minDangerScale = 1.0f;
 
+    [Header("Danger Shake")]
+    [SerializeField] private float shakeAmount = 8f;
+    [SerializeField] private float shakeSpeed = 2f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private string volumeParameter = "MasterVolume";
+
+    [SerializeField]
+    [Range(-80f, 0f)]
+    private float deathVolume = -20f;
+
     private Coroutine fadeCoroutine;
+
+    private Vector2 dangerOriginalPosition;
+    private float currentProximity;
 
     private void Awake()
     {
@@ -27,13 +43,23 @@ public class ScreenEffects : MonoBehaviour
 
         Instance = this;
 
+        dangerOriginalPosition = dangerTransform.anchoredPosition;
+
         // Ensure the death fade starts transparent and disabled.
         Color deathColor = deathFadeImage.color;
         deathColor.a = 0f;
         deathFadeImage.color = deathColor;
         deathFadeImage.enabled = false;
 
+        // Ensure audio starts at full volume.
+        audioMixer.SetFloat(volumeParameter, 0f);
+
         FadeIn(1f, 3f);
+    }
+
+    private void Update()
+    {
+        UpdateDangerShake();
     }
 
     #region Fade
@@ -104,9 +130,9 @@ public class ScreenEffects : MonoBehaviour
     /// </summary>
     public void SetDangerProximity(float proximity)
     {
-        proximity = Mathf.Clamp01(proximity);
+        currentProximity = Mathf.Clamp01(proximity);
 
-        float scale = Mathf.Lerp(maxDangerScale, minDangerScale, proximity);
+        float scale = Mathf.Lerp(maxDangerScale, minDangerScale, currentProximity);
         dangerTransform.localScale = Vector3.one * scale;
     }
 
@@ -116,8 +142,24 @@ public class ScreenEffects : MonoBehaviour
         SetDangerProximity(proximity);
     }
 
+    private void UpdateDangerShake()
+    {
+        if (currentProximity <= 0f)
+        {
+            dangerTransform.anchoredPosition = dangerOriginalPosition;
+            return;
+        }
+
+        float intensity = currentProximity * currentProximity * shakeAmount;
+
+        float x = (Mathf.PerlinNoise(Time.time * shakeSpeed, 0f) - 0.5f) * 2f * intensity;
+        float y = (Mathf.PerlinNoise(0f, Time.time * shakeSpeed) - 0.5f) * 2f * intensity;
+
+        dangerTransform.anchoredPosition = dangerOriginalPosition + new Vector2(x, y);
+    }
+
     /// <summary>
-    /// Controls the enemy death fade.
+    /// Controls the enemy death fade and audio.
     /// </summary>
     public void SetDeathFade(float progress)
     {
@@ -132,6 +174,10 @@ public class ScreenEffects : MonoBehaviour
 
         if (progress <= 0f)
             deathFadeImage.enabled = false;
+
+        // Fade the game's audio.
+        float volume = Mathf.Lerp(0f, deathVolume, progress);
+        audioMixer.SetFloat(volumeParameter, volume);
     }
 
     #endregion
