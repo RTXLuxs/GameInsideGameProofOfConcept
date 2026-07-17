@@ -9,6 +9,8 @@ public class NoteViewer : MonoBehaviour
 
     [SerializeField] private GameObject notePanel;
 
+    AudioSource audioSource;
+
     private void Awake()
     {
         noteInteraction = GetComponent<NoteInteraction>();
@@ -16,6 +18,8 @@ public class NoteViewer : MonoBehaviour
         noteInteraction.noteText = interaction;
 
         notePanel.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -30,6 +34,8 @@ public class NoteViewer : MonoBehaviour
     public void Show(Sprite note)
     {
         notePanel.SetActive(true);
+
+        audioSource.PlayOneShot(audioSource.clip);
 
         PlayerState.Instance.DisableControls();
 
