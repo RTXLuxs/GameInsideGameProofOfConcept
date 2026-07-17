@@ -47,6 +47,7 @@ public class FuseInsertInteraction : MonoBehaviour, IInteractable
         requirements?.NotifyRequirementsSatisfied();
 
         FuseInserted = true;
+        ChairliftState.Instance.fuseInserted = true;
 
         if (fuseState != null)
         {

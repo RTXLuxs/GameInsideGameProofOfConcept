@@ -4548,6 +4548,7 @@ GameObject:
   - component: {fileID: 513541290}
   - component: {fileID: 513541291}
   - component: {fileID: 513541292}
+  - component: {fileID: 513541293}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4661,6 +4662,20 @@ MonoBehaviour:
   dangerTransform: {fileID: 2112349126}
   maxDangerScale: 1.6
   minDangerScale: 1
+--- !u!114 &513541293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513541284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd8b3e3177ccbf4a9182925d55eb157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChairliftState
+  fuseInserted: 0
+  codeEntered: 0
 --- !u!1 &516547894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7282556243819948884, guid: 4e856d8b699a743448e3c5edecea21aa, type: 3}
