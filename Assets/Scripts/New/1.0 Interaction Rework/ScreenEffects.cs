@@ -28,6 +28,28 @@ public class ScreenEffects : MonoBehaviour
     [Range(-80f, 0f)]
     private float deathVolume = -20f;
 
+    [Header("Danger Ambience")]
+    [SerializeField] private AudioSource dangerAudio;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float minimumDangerVolume = 0.08f;
+
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float maximumDangerVolume = 0.65f;
+
+    [SerializeField]
+    private float dangerFadeSpeed = 1.2f;
+
+    [SerializeField]
+    private float minimumDangerPitch = 0.97f;
+
+    [SerializeField]
+    private float maximumDangerPitch = 1.03f;
+
+    private float currentDangerVolume;
+
     private Coroutine fadeCoroutine;
 
     private Vector2 dangerOriginalPosition;
@@ -54,12 +76,21 @@ public class ScreenEffects : MonoBehaviour
         // Ensure audio starts at full volume.
         audioMixer.SetFloat(volumeParameter, 0f);
 
+        // Ensure danger ambience starts quietly.
+        dangerAudio.volume = minimumDangerVolume;
+        currentDangerVolume = minimumDangerVolume;
+        dangerAudio.pitch = minimumDangerPitch;
+
+        if (!dangerAudio.isPlaying)
+            dangerAudio.Play();
+
         FadeIn(1f, 3f);
     }
 
     private void Update()
     {
         UpdateDangerShake();
+        UpdateDangerAudio();
     }
 
     #region Fade
@@ -156,6 +187,31 @@ public class ScreenEffects : MonoBehaviour
         float y = (Mathf.PerlinNoise(0f, Time.time * shakeSpeed) - 0.5f) * 2f * intensity;
 
         dangerTransform.anchoredPosition = dangerOriginalPosition + new Vector2(x, y);
+    }
+
+    private void UpdateDangerAudio()
+    {
+        float targetVolume = Mathf.Lerp(
+            minimumDangerVolume,
+            maximumDangerVolume,
+            currentProximity);
+
+        currentDangerVolume = Mathf.MoveTowards(
+            currentDangerVolume,
+            targetVolume,
+            dangerFadeSpeed * Time.deltaTime);
+
+        dangerAudio.volume = currentDangerVolume;
+
+        float normalizedVolume = Mathf.InverseLerp(
+            minimumDangerVolume,
+            maximumDangerVolume,
+            currentDangerVolume);
+
+        dangerAudio.pitch = Mathf.Lerp(
+            minimumDangerPitch,
+            maximumDangerPitch,
+            normalizedVolume);
     }
 
     /// <summary>

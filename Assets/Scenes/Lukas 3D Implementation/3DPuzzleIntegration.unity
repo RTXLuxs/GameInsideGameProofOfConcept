@@ -4814,6 +4814,12 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: aa866f356c16751468a11270b7abdb6e, type: 2}
   volumeParameter: MasterVolume
   deathVolume: -20
+  dangerAudio: {fileID: 589974590}
+  minimumDangerVolume: 0.08
+  maximumDangerVolume: 0.65
+  dangerFadeSpeed: 1.5
+  minimumDangerPitch: 0.9
+  maximumDangerPitch: 1.1
 --- !u!114 &513541293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5034,7 +5040,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: aa866f356c16751468a11270b7abdb6e, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 970b7b0390902bd4a8410dd37497e485, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
