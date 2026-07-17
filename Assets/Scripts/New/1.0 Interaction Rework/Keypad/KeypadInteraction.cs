@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class KeypadInteraction : MonoBehaviour, IInteractable
 {
@@ -9,6 +10,8 @@ public class KeypadInteraction : MonoBehaviour, IInteractable
     [SerializeField] private CinemachineCamera keypadCam;
 
     private bool isUsingKeypad;
+
+    private Collider thisCollider;
 
     public bool IsUsingKeypad => isUsingKeypad;
 
@@ -47,13 +50,15 @@ public class KeypadInteraction : MonoBehaviour, IInteractable
         PlayerState.Instance.DisableControls();
 
         // TODO:
-        // Disable player movement
-
-        // TODO:
         // Disable player interaction
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        interactionText = "";
+
+        thisCollider = GetComponent<Collider>();
+        thisCollider.enabled = false;
 
         Debug.Log("Entered keypad.");
     }
@@ -65,17 +70,18 @@ public class KeypadInteraction : MonoBehaviour, IInteractable
         SwitchCameras.Instance.SwitchToFPS();
 
         PlayerState.Instance.EnableControls();
-        // TODO:
-        // Switch back to FPS camera
-
-        // TODO:
-        // Re-enable player movement
 
         // TODO:
         // Re-enable player interaction
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        interactionText = "Use Keypad[E]";
+
+        thisCollider = GetComponent<Collider>();
+        thisCollider.enabled = true;
+
 
         Debug.Log("Exited keypad.");
     }
