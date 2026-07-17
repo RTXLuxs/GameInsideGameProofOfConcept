@@ -3,7 +3,8 @@ using UnityEngine;
 public class NoteInteraction : MonoBehaviour, IInteractable
 {
     [SerializeField] private Sprite noteImage;
-    [SerializeField] private string noteText;
+    [HideInInspector] public string noteText;
+    public NoteViewer noteViewer;
 
     public string GetInteractionText()
     {
@@ -12,6 +13,6 @@ public class NoteInteraction : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        NoteViewer.Instance.Show(noteImage);
+        noteViewer.Show(noteImage);
     }
 }
