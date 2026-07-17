@@ -71,6 +71,8 @@ public class KeypadController : MonoBehaviour
             display.ShowMessage("Correct");
             audioSource.PlayOneShot(correctClip);
             keypadInteraction.ExitKeypad();
+            keypadInteraction.interactionText = "";
+            keypadInteraction.enabled = false;
         }
         else
         {
