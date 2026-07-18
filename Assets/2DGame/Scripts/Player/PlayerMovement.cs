@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveInput => moveInput;
 
+    // True while the 2D player is the one being actively controlled (not in PC/3D mode).
+    public bool CanMove => canMove;
+
     private AudioSource footstepAudioSource;
     private AudioSource gameOverSource;
 
