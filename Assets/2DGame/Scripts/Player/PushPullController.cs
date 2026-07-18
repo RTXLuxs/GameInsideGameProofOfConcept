@@ -40,9 +40,13 @@ public class PushPullController : MonoBehaviour
     private Rigidbody2D playerRb;
     private Collider2D playerCol;
     private PlayerMovement playerMovement;
+    private ClimbController climb;
 
     private Pushable attached;
     private Vector2 axis;        // unit direction from player toward the attached object
+
+    /// <summary>True while the player is attached to (pushing/pulling) an object.</summary>
+    public bool IsAttached => attached != null;
     private float holdTimer;
     private float releaseTimer;  // how long input has been released while attached
     private bool stepping;
@@ -52,6 +56,7 @@ public class PushPullController : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         playerCol = GetComponent<Collider2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        climb = GetComponent<ClimbController>();
 
         if (attachedPrompt != null)
             attachedPrompt.SetActive(false);
@@ -59,6 +64,14 @@ public class PushPullController : MonoBehaviour
 
     private void Update()
     {
+        // No pushing/pulling while climbing on top of an object.
+        if (climb != null && climb.IsClimbing)
+        {
+            if (attached != null)
+                Detach();
+            return;
+        }
+
         if (attached != null)
             HandleAttached();
         else
