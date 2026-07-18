@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         footstepAudioSource = GameObject.Find("FootstepProxy").GetComponent<AudioSource>();
-        gameOverSource = GameObject.Find("GameOverSound").GetComponent<AudioSource>();
 
         footstepAudioSource.enabled = false;
     }
@@ -77,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Respawn()
     {
+        gameOverSource = GameObject.Find("GameOverSound").GetComponent<AudioSource>();
         gameOverSource.Play();
         moveInput = Vector2.zero;
         rb.linearVelocity = Vector2.zero;

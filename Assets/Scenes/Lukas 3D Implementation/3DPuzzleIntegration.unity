@@ -1033,7 +1033,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &85258120
 MonoBehaviour:
@@ -1540,7 +1540,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!4 &154135423 stripped
 Transform:
@@ -6748,7 +6748,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &471388033
 BoxCollider:
@@ -18865,7 +18865,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1526627510
 MonoBehaviour:
@@ -21670,7 +21670,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1757948803
 MonoBehaviour:
@@ -24907,7 +24907,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &2054730729 stripped
 GameObject:
@@ -24973,7 +24973,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &2069323243
 GameObject:
@@ -25914,8 +25914,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.79, y: 22.53, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.8806791, y: 15.353936, z: 3.141043}
+  m_Center: {x: -0.022525253, y: 6.8641596, z: -0.027663339}
 --- !u!54 &2141101877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32422,7 +32422,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &2301827309887590773
 BoxCollider:
@@ -34484,6 +34484,7 @@ GameObject:
   - component: {fileID: 2141101870}
   - component: {fileID: 2141101875}
   - component: {fileID: 2141101877}
+  - component: {fileID: 3348195791968957621}
   m_Layer: 7
   m_Name: Clock
   m_TagString: Untagged
@@ -34491,6 +34492,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3348195791968957621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348195791968957620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71dcf5d59c793f42a9330d4464af5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Furniture3DAnchor
+  furnitureId: K_Shelf
 --- !u!4 &3352294990457872566
 Transform:
   m_ObjectHideFlags: 0
@@ -45900,8 +45914,6 @@ GameObject:
   - component: {fileID: 2724695102420732896}
   - component: {fileID: 7452936405246790560}
   - component: {fileID: 8855238650203587436}
-  - component: {fileID: 8855238650203587437}
-  - component: {fileID: 8855238650203587438}
   m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
@@ -46579,40 +46591,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8855238650203587437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8517948309027620329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71dcf5d59c793f42a9330d4464af5c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Furniture3DAnchor
-  furnitureId: K_Shelf
---- !u!65 &8855238650203587438
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8517948309027620329}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.035, y: 0.04, z: 0.16}
-  m_Center: {x: 0, y: 0, z: 0.025}
 --- !u!4 &8876755638897560850
 Transform:
   m_ObjectHideFlags: 0
