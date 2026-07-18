@@ -12,7 +12,7 @@ public class AutomaticDoorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player3D") && !other.CompareTag("Wheelchair"))
+        if (!other.CompareTag("Player3D") && !other.CompareTag("Wheelchair") && !other.CompareTag("Enemy3D"))
             return;
 
         door.Open();
@@ -20,7 +20,7 @@ public class AutomaticDoorTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player3D") && !other.CompareTag("Wheelchair"))
+        if (!other.CompareTag("Player3D") && !other.CompareTag("Wheelchair") && !other.CompareTag("Enemy3D"))
             return;
 
         door.Close();

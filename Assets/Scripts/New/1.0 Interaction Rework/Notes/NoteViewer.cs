@@ -18,32 +18,35 @@ public class NoteViewer : MonoBehaviour
     [SerializeField] private GameObject textContainer;
     [SerializeField] private TMP_Text noteText;
 
-    private AudioSource audioSource;
-
     private NoteInteraction currentNote;
+
+    public bool IsOpen => notePanel.activeSelf;
 
     private void Awake()
     {
         notePanel.SetActive(false);
-
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         if (notePanel.activeSelf && UserInput.Instance.pausePressed)
         {
+            Debug.Log("Escape pressed -> Hide()");
             Hide();
         }
     }
 
     public void Show(NoteInteraction note)
     {
+        // Prevent opening the note again while it is already open.
+        if (notePanel.activeSelf)
+            return;
+
+        Debug.Log($"Show called for {note.name}");
         currentNote = note;
+        Debug.Log($"Stored currentNote = {currentNote.name}");
 
         notePanel.SetActive(true);
-
-        audioSource.PlayOneShot(audioSource.clip);
 
         PlayerState.Instance.DisableControls();
 
@@ -74,12 +77,17 @@ public class NoteViewer : MonoBehaviour
 
     public void Hide()
     {
+        Debug.Log($"Hide called. currentNote = {(currentNote ? currentNote.name : "NULL")}");
+
         notePanel.SetActive(false);
 
         PlayerState.Instance.EnableControls();
 
+        Debug.Log($"Current note: {(currentNote != null ? currentNote.name : "NULL")}");
+
         if (currentNote != null)
         {
+            Debug.Log("Calling EnableInteraction");
             currentNote.EnableInteraction();
             currentNote = null;
         }

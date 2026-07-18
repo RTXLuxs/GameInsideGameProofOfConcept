@@ -10,6 +10,7 @@ public class NoteInteraction : MonoBehaviour, IInteractable
 
     [Header("Interaction")]
     [SerializeField] private string interactionText = "Read Note";
+    private string interactionTextPassed;
     [SerializeField] private NoteViewer noteViewer;
 
     [Header("Type")]
@@ -20,6 +21,7 @@ public class NoteInteraction : MonoBehaviour, IInteractable
 
     [Header("Text Note")]
     [SerializeField] private Sprite backgroundImage;
+
     [TextArea(10, 30)]
     [SerializeField] private string noteBody;
 
@@ -28,9 +30,14 @@ public class NoteInteraction : MonoBehaviour, IInteractable
     public Sprite BackgroundImage => backgroundImage;
     public string NoteBody => noteBody;
 
+    private void Awake()
+    {
+        interactionTextPassed = interactionText;
+    }
+
     public string GetInteractionText()
     {
-        return interactionText;
+        return interactionTextPassed;
     }
 
     public void Interact()
@@ -40,11 +47,11 @@ public class NoteInteraction : MonoBehaviour, IInteractable
 
     public void DisableInteraction()
     {
-        interactionText = "";
+        interactionTextPassed = "";
     }
 
     public void EnableInteraction()
     {
-        interactionText = "Read Note";
+        interactionTextPassed = interactionText;
     }
 }
