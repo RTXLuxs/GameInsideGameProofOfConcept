@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
     private IAstarAI ai;
     private Transform player;
     private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
     private State state = State.Patrol;
     private int waypointIndex;
     private Vector3 distractionPoint;
@@ -51,6 +52,7 @@ public class EnemyController : MonoBehaviour
         {
             player = playerObj.transform;
             playerMovement = playerObj.GetComponent<PlayerMovement>();
+            playerHealth = playerObj.GetComponent<PlayerHealth>();
         }
 
         GoToCurrentWaypoint();
@@ -152,7 +154,7 @@ public class EnemyController : MonoBehaviour
             float dist = Vector2.Distance(transform.position, player.position);
             if (playerMovement != null && dist <= killDistance)
             {
-                playerMovement.Respawn();
+                KillPlayer();
                 ResetToSpawn();
             }
             else
@@ -192,8 +194,18 @@ public class EnemyController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
-        if (playerMovement != null) playerMovement.Respawn();
+        KillPlayer();
         ResetToSpawn();
+    }
+
+    // Deducts a life (and respawns or triggers game over) via PlayerHealth when present,
+    // falling back to a plain respawn if the player has no health component.
+    private void KillPlayer()
+    {
+        if (playerHealth != null)
+            playerHealth.Die();
+        else if (playerMovement != null)
+            playerMovement.Respawn();
     }
 
     private void ResetToSpawn()
