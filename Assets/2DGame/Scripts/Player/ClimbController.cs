@@ -40,6 +40,7 @@ public class ClimbController : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSprite;
     private PlayerMovement playerMovement;
+    private PushPullController pushPull;
 
     private bool isClimbing;
     private Climbable current;   // the object currently mounted
@@ -54,6 +55,7 @@ public class ClimbController : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponentInChildren<SpriteRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
+        pushPull = GetComponent<PushPullController>();
 
         if (climbPrompt != null)
             climbPrompt.SetActive(false);
@@ -73,6 +75,11 @@ public class ClimbController : MonoBehaviour
 
         // The prompt only makes sense when a climbable is in reach and we aren't already up.
         Climbable inReach = isClimbing ? null : FindClimbableInReach();
+
+        // Don't offer to climb while pushing/pulling an object.
+        if (pushPull != null && pushPull.IsAttached)
+            inReach = null;
+
         ShowPrompt(inReach);
 
         if (!kb[climbKey].wasPressedThisFrame) return;

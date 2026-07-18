@@ -44,6 +44,9 @@ public class PushPullController : MonoBehaviour
 
     private Pushable attached;
     private Vector2 axis;        // unit direction from player toward the attached object
+
+    /// <summary>True while the player is attached to (pushing/pulling) an object.</summary>
+    public bool IsAttached => attached != null;
     private float holdTimer;
     private float releaseTimer;  // how long input has been released while attached
     private bool stepping;
