@@ -31,8 +31,10 @@ public class ClimbController : MonoBehaviour
     [SerializeField] private int mountedSortingBoost = 100;
     [Tooltip("Shrinks the walkable area inside the object's collider. 0 = the player can reach the object's edges; larger keeps the player more toward the centre.")]
     [SerializeField] private float edgePadding = 0f;
-    [Tooltip("Optional 'Press C to climb' prompt, shown while a climbable is in reach.")]
+    [Tooltip("Optional world-space 'C to Climb' prompt. Shown floating above whichever climbable is in reach.")]
     [SerializeField] private GameObject climbPrompt;
+    [Tooltip("World-space offset from the top of the object where the climb prompt is placed.")]
+    [SerializeField] private Vector3 promptOffset = new Vector3(0f, 0.25f, 0f);
 
     private Collider2D playerCol;
     private Rigidbody2D playerRb;
@@ -65,23 +67,35 @@ public class ClimbController : MonoBehaviour
         // Only respond while the 2D player is the one being controlled.
         if (playerMovement != null && !playerMovement.CanMove)
         {
-            if (climbPrompt != null) climbPrompt.SetActive(false);
+            ShowPrompt(null);
             return;
         }
 
-        // Show/hide the prompt based on whether a climbable is in reach (only when grounded).
-        if (!isClimbing && climbPrompt != null)
-            climbPrompt.SetActive(FindClimbableInReach() != null);
+        // The prompt only makes sense when a climbable is in reach and we aren't already up.
+        Climbable inReach = isClimbing ? null : FindClimbableInReach();
+        ShowPrompt(inReach);
 
         if (!kb[climbKey].wasPressedThisFrame) return;
 
         if (isClimbing)
             Dismount();
-        else
+        else if (inReach != null)
+            Mount(inReach);
+    }
+
+    // Floats the shared prompt above the given climbable, or hides it when none.
+    private void ShowPrompt(Climbable target)
+    {
+        if (climbPrompt == null) return;
+
+        bool show = target != null && target.Col != null;
+        if (climbPrompt.activeSelf != show)
+            climbPrompt.SetActive(show);
+
+        if (show)
         {
-            Climbable target = FindClimbableInReach();
-            if (target != null)
-                Mount(target);
+            Bounds b = target.Col.bounds;
+            climbPrompt.transform.position = new Vector3(b.center.x, b.max.y, 0f) + promptOffset;
         }
     }
 
