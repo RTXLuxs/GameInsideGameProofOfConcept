@@ -49,6 +49,7 @@ public class ScreenEffects : MonoBehaviour
     private float maximumDangerPitch = 1.03f;
 
     private float currentDangerVolume;
+    private float baseMasterVolume;
 
     private Coroutine fadeCoroutine;
 
@@ -73,8 +74,8 @@ public class ScreenEffects : MonoBehaviour
         deathFadeImage.color = deathColor;
         deathFadeImage.enabled = false;
 
-        // Ensure audio starts at full volume.
-        audioMixer.SetFloat(volumeParameter, 0f);
+        // Read the current master volume (already set by SettingsManager).
+        audioMixer.GetFloat(volumeParameter, out baseMasterVolume);
 
         // Ensure danger ambience starts quietly.
         dangerAudio.volume = minimumDangerVolume;
@@ -91,6 +92,11 @@ public class ScreenEffects : MonoBehaviour
     {
         UpdateDangerShake();
         UpdateDangerAudio();
+    }
+
+    public void RefreshBaseVolume()
+    {
+        audioMixer.GetFloat(volumeParameter, out baseMasterVolume);
     }
 
     #region Fade
@@ -154,11 +160,6 @@ public class ScreenEffects : MonoBehaviour
 
     #region Danger
 
-    /// <summary>
-    /// Moves the vignette onto the screen based on proximity.
-    /// 0 = far away
-    /// 1 = very close
-    /// </summary>
     public void SetDangerProximity(float proximity)
     {
         currentProximity = Mathf.Clamp01(proximity);
@@ -214,9 +215,6 @@ public class ScreenEffects : MonoBehaviour
             normalizedVolume);
     }
 
-    /// <summary>
-    /// Controls the enemy death fade and audio.
-    /// </summary>
     public void SetDeathFade(float progress)
     {
         progress = Mathf.Clamp01(progress);
@@ -231,8 +229,12 @@ public class ScreenEffects : MonoBehaviour
         if (progress <= 0f)
             deathFadeImage.enabled = false;
 
-        // Fade the game's audio.
-        float volume = Mathf.Lerp(0f, deathVolume, progress);
+        // Fade relative to the player's chosen master volume.
+        float volume = Mathf.Lerp(
+            baseMasterVolume,
+            baseMasterVolume + deathVolume,
+            progress);
+
         audioMixer.SetFloat(volumeParameter, volume);
     }
 
