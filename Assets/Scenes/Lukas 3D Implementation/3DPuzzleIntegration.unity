@@ -1410,6 +1410,45 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 144880332082557102, guid: 706b44c4e39991b409fb9455cc9cab40, type: 3}
   m_PrefabInstance: {fileID: 1708660658}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &152335456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 315920551034038554, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
+  m_PrefabInstance: {fileID: 2054730724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &152335457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152335456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71dcf5d59c793f42a9330d4464af5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Furniture3DAnchor
+  furnitureId: LR_Lamp
+--- !u!65 &152335458
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152335456}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.66, y: 1.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &154135423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5090208160227379727, guid: b21ceab613722b3479ad5a9e577824ad, type: 3}
@@ -24449,6 +24488,12 @@ PrefabInstance:
     - {fileID: 191638792654955420, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 315920551034038554, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 152335458}
+    - targetCorrespondingSourceObject: {fileID: 315920551034038554, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 152335457}
     - targetCorrespondingSourceObject: {fileID: 2514036347764909625, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2054730728}
@@ -24461,6 +24506,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6817708951681703425, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2054730730}
+    - targetCorrespondingSourceObject: {fileID: 6817708951681703425, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2054730731}
   m_SourcePrefab: {fileID: 100100000, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
 --- !u!1 &2054730725 stripped
 GameObject:
@@ -24546,6 +24594,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Furniture3DAnchor
   furnitureId: LR_Chair
+--- !u!65 &2054730731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054730729}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1708283, y: 1.2373322, z: 1.5933686}
+  m_Center: {x: -0.00000047683716, y: 0.6304849, z: 0}
 --- !u!1 &2069323243
 GameObject:
   m_ObjectHideFlags: 0
