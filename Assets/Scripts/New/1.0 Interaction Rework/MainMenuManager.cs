@@ -10,6 +10,8 @@ public class MainMenuManager : MonoBehaviour
     [Header("Scene")]
     [SerializeField] private string gameSceneName = "Apartment";
 
+    public Animator animator;
+
     private void Start()
     {
         mainPanel.SetActive(true);
@@ -19,6 +21,12 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(gameSceneName);
+    }
+
+    public void StartFadeOut()
+    {
+        animator.gameObject.SetActive(true);
+        animator.SetTrigger("Start");
     }
 
     public void OpenSettings()
