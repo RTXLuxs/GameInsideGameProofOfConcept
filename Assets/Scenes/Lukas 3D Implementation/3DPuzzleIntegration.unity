@@ -39927,6 +39927,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6447307532814470320, guid: b65a6d863b695184299e03932e004b29, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6139507167338825322}
+    - targetCorrespondingSourceObject: {fileID: 6447307532814470320, guid: b65a6d863b695184299e03932e004b29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6139507167338825323}
   m_SourcePrefab: {fileID: 100100000, guid: b65a6d863b695184299e03932e004b29, type: 3}
 --- !u!1 &5625605113015018588
 GameObject:
@@ -41189,6 +41192,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inspectable
   interactionText: 'Pick Up Chairlift Manual [E]'
+--- !u!114 &6139507167338825323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409455658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f9a5631d3c51f43bbae956db04deaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteDropAnchor
+  noteId: K_Note
+  onDrop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6150257017073395116
 GameObject:
   m_ObjectHideFlags: 0
