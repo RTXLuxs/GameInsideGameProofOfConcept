@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool hasKey = false;
 
+    [SerializeField] private string sceneToLoad = "Forouzan_2D-Minigame";
+
     private void Awake()
     {
         if (Instance != null)
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SceneManager.LoadScene("2D-Minigame", LoadSceneMode.Additive);
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
     }
 
     public GameObject targetObjectInMainScene;
