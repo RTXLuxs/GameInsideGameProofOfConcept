@@ -6746,6 +6746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   hasKey: 0
+  sceneToLoad: Updated_scene
   targetObjectInMainScene: {fileID: 2001207523}
 --- !u!114 &513541288
 MonoBehaviour:
