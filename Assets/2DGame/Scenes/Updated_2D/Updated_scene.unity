@@ -35101,7 +35101,7 @@ GameObject:
   - component: {fileID: 1833172868}
   - component: {fileID: 1833172870}
   - component: {fileID: 1833172869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38634,7 +38634,6 @@ MonoBehaviour:
   - {fileID: 1858305814}
   - {fileID: 2053224976}
   - {fileID: 549035893}
-  gameOverUI: {fileID: 0}
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
