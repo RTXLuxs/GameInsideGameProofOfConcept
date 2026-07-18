@@ -1,63 +1,87 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NoteViewer : MonoBehaviour
 {
-    private NoteInteraction noteInteraction;
-
-    public string interaction;
-
+    [Header("UI")]
     [SerializeField] private GameObject notePanel;
+
+    [Header("Shared")]
+    [SerializeField] private Image backgroundImage;
+
+    [Header("Image Notes")]
+    [SerializeField] private GameObject imageContainer;
+    [SerializeField] private Image noteImage;
+
+    [Header("Text Notes")]
+    [SerializeField] private GameObject textContainer;
+    [SerializeField] private TMP_Text noteText;
+
+    private AudioSource audioSource;
+
+    private NoteInteraction currentNote;
 
     private void Awake()
     {
-        noteInteraction = GetComponent<NoteInteraction>();
-        
-        noteInteraction.noteText = interaction;
-
         notePanel.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        if (UserInput.Instance.pausePressed)
+        if (notePanel.activeSelf && UserInput.Instance.pausePressed)
         {
             Hide();
-            Debug.Log("this");
         }
     }
 
-    public void Show(Sprite note)
+    public void Show(NoteInteraction note)
     {
+        currentNote = note;
+
         notePanel.SetActive(true);
+
+        audioSource.PlayOneShot(audioSource.clip);
 
         PlayerState.Instance.DisableControls();
 
-        noteInteraction.noteText = "";
+        currentNote.DisableInteraction();
 
-        notePanel.GetComponent<Image>().sprite = note;
+        switch (note.Type)
+        {
+            case NoteInteraction.NoteType.Image:
 
-        // TODO:
-        // Set the UI Image sprite
+                imageContainer.SetActive(true);
+                textContainer.SetActive(false);
 
-        // TODO:
-        // Unlock cursor
+                noteImage.sprite = note.NoteImage;
 
-        // TODO:
-        // Disable player controls
+                break;
+
+            case NoteInteraction.NoteType.Text:
+
+                imageContainer.SetActive(false);
+                textContainer.SetActive(true);
+
+                backgroundImage.sprite = note.BackgroundImage;
+                noteText.text = note.NoteBody;
+
+                break;
+        }
     }
 
     public void Hide()
     {
         notePanel.SetActive(false);
 
-        noteInteraction.noteText = interaction;
-
         PlayerState.Instance.EnableControls();
-        // TODO:
-        // Lock cursor
 
-        // TODO:
-        // Enable player controls
+        if (currentNote != null)
+        {
+            currentNote.EnableInteraction();
+            currentNote = null;
+        }
     }
 }
