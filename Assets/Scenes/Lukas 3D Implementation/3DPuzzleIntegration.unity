@@ -6909,6 +6909,7 @@ GameObject:
   - component: {fileID: 513541291}
   - component: {fileID: 513541292}
   - component: {fileID: 513541293}
+  - component: {fileID: 513541294}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7048,6 +7049,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChairliftState
   fuseInserted: 0
   codeEntered: 0
+--- !u!114 &513541294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513541284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e5d8a897be47b42be75aa1e630add1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+  masterVolumeSlider: {fileID: 0}
+  brightnessSlider: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: aa866f356c16751468a11270b7abdb6e, type: 2}
+  globalVolume: {fileID: 823077571}
 --- !u!1001 &520909139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9909,6 +9926,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd7ea19fe8a6c3a4ab382b2546640226, type: 3}
+--- !u!114 &823077571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7445909166248657384, guid: 0153db73cae5eb34f9e7456ee4d844de, type: 3}
+  m_PrefabInstance: {fileID: 2054730724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
 --- !u!1 &831574196
 GameObject:
   m_ObjectHideFlags: 0

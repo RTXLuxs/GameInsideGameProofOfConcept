@@ -48,6 +48,8 @@ public class ScreenEffects : MonoBehaviour
     [SerializeField]
     private float maximumDangerPitch = 1.03f;
 
+    private const string MasterVolumeKey = "MasterVolume";
+
     private float currentDangerVolume;
     private float baseMasterVolume;
 
@@ -74,8 +76,10 @@ public class ScreenEffects : MonoBehaviour
         deathFadeImage.color = deathColor;
         deathFadeImage.enabled = false;
 
-        // Read the current master volume (already set by SettingsManager).
-        audioMixer.GetFloat(volumeParameter, out baseMasterVolume);
+        RefreshBaseVolume();
+
+        // Restore the player's chosen master volume.
+        audioMixer.SetFloat(volumeParameter, baseMasterVolume);
 
         // Ensure danger ambience starts quietly.
         dangerAudio.volume = minimumDangerVolume;
@@ -96,7 +100,8 @@ public class ScreenEffects : MonoBehaviour
 
     public void RefreshBaseVolume()
     {
-        audioMixer.GetFloat(volumeParameter, out baseMasterVolume);
+        float sliderValue = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
+        baseMasterVolume = Mathf.Log10(Mathf.Max(sliderValue, 0.0001f)) * 20f;
     }
 
     #region Fade
@@ -229,7 +234,7 @@ public class ScreenEffects : MonoBehaviour
         if (progress <= 0f)
             deathFadeImage.enabled = false;
 
-        // Fade relative to the player's chosen master volume.
+        // Reduce volume relative to the player's chosen master volume.
         float volume = Mathf.Lerp(
             baseMasterVolume,
             baseMasterVolume + deathVolume,

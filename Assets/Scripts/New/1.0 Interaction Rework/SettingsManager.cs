@@ -21,10 +21,13 @@ public class SettingsManager : MonoBehaviour
     private const string MasterVolumeKey = "MasterVolume";
     private const string BrightnessKey = "Brightness";
 
+    private const float DefaultMasterVolume = 1f;
+    private const float DefaultBrightness = 0f;
+
     private void Awake()
     {
         if (globalVolume == null)
-            globalVolume = FindFirstObjectByType<Volume>();
+            globalVolume = FindAnyObjectByType<Volume>();
 
         if (globalVolume != null)
             globalVolume.profile.TryGet(out colorAdjustments);
@@ -32,8 +35,8 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        float volume = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
-        float brightness = PlayerPrefs.GetFloat(BrightnessKey, 0f);
+        float volume = PlayerPrefs.GetFloat(MasterVolumeKey, DefaultMasterVolume);
+        float brightness = PlayerPrefs.GetFloat(BrightnessKey, DefaultBrightness);
 
         ApplyMasterVolume(volume);
         ApplyBrightness(brightness);
@@ -51,23 +54,38 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private void ApplyMasterVolume(float value)
+    public void ApplyMasterVolume(float value)
     {
         float dB = Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20f;
 
         audioMixer.SetFloat("MasterVolume", dB);
 
         PlayerPrefs.SetFloat(MasterVolumeKey, value);
+
+        if (ScreenEffects.Instance != null)
+            ScreenEffects.Instance.RefreshBaseVolume();
     }
 
-    private void ApplyBrightness(float value)
+    public void ApplyBrightness(float value)
     {
         if (colorAdjustments != null)
-        {
             colorAdjustments.postExposure.value = value;
-        }
 
         PlayerPrefs.SetFloat(BrightnessKey, value);
+    }
+
+    public void ResetSettings()
+    {
+        ApplyMasterVolume(DefaultMasterVolume);
+        ApplyBrightness(DefaultBrightness);
+
+        if (masterVolumeSlider != null)
+            masterVolumeSlider.SetValueWithoutNotify(DefaultMasterVolume);
+
+        if (brightnessSlider != null)
+            brightnessSlider.SetValueWithoutNotify(DefaultBrightness);
+
+        PlayerPrefs.Save();
     }
 
     private void OnDestroy()
