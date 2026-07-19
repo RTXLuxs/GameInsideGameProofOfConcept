@@ -23,18 +23,23 @@ public class InGameSettings : MonoBehaviour
                 menuOpen = true;
                 menuObj.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             else
             {
                 menuObj.SetActive(false);
                 menuOpen = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }
 
     public void ReturnToMenu()
     {
+        Destroy(GameManager.Instance.gameObject);
+        Destroy(WorldState.Instance.gameObject);
+
         SceneManager.LoadScene("MainMenu");
     }
 }
