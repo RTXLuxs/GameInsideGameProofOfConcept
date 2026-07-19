@@ -28,6 +28,7 @@ public class WheelchairCutsceneTrigger : MonoBehaviour
 
         triggered = true;
 
+        PlayerState.Instance.canUseTablet = false;
         tabletAnimator.SetBool("Watching", false);
         PlayerState.Instance.ExitPC();
         SwitchCameras.Instance.SwitchToCutscene();

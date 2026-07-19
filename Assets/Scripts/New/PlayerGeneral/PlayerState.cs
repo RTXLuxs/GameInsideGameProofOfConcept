@@ -10,6 +10,8 @@ public class PlayerState : MonoBehaviour
 
     [HideInInspector] public bool bedridden = true;
 
+    [HideInInspector] public bool canUseTablet = false;
+
     private void Awake()
     {
         if (Instance != null)

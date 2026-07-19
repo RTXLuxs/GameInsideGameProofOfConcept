@@ -44,6 +44,7 @@ public class GrabTabletInteraction : MonoBehaviour, IInteractable
         if (playerTablet != null)
         {
             playerTablet.SetActive(true);
+            PlayerState.Instance.canUseTablet = true;
         }
 
         Debug.Log("Tablet pickup completed.");

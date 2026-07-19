@@ -21,4 +21,9 @@ public class CutsceneSwitchCams : MonoBehaviour
         SwitchCameras.Instance.SwitchToFPS();
         PlayerState.Instance.LookOnly();
     }
+
+    public void EnableTablet()
+    {
+        PlayerState.Instance.canUseTablet = true;
+    }
 }
