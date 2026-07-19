@@ -7336,6 +7336,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6458945, y: 1.6190798, z: 0.53416467}
   m_Center: {x: -0.009473771, y: 0.041764855, z: 0.020686984}
+--- !u!1001 &487992693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.107346535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.1751223
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518601423685409384, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798553647428530016, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
+      propertyPath: m_Name
+      value: Local Volumetric Fog
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f7004a392f040a4184b5cecf3f85602, type: 3}
 --- !u!1001 &508834857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8313,7 +8370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 913898231493205508, guid: 5e1dbe448ea3b0a46b732b78c5328425, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2947939598700754785, guid: 5e1dbe448ea3b0a46b732b78c5328425, type: 3}
       propertyPath: m_Layer
@@ -48965,6 +49022,7 @@ SceneRoots:
   - {fileID: 5256041517029602687}
   - {fileID: 1702334328}
   - {fileID: 218489490}
+  - {fileID: 487992693}
   - {fileID: 2071573229}
   - {fileID: 1811769636}
   - {fileID: 260396335}
