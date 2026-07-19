@@ -50,7 +50,9 @@ public class CarryableItem : MonoBehaviour, IInteractable2D
         transform.SetParent(playerCarry.CarryPoint);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-        PlayerState.Instance.carriesScrewdriver = true;
+        PlayerState.Instance.screwdriver.SetActive(true);
+        PlayerState.Instance.screwdriver.transform.SetParent(PlayerState.Instance.footstepProxy.transform);
+        PlayerState.Instance.screwdriver.transform.localPosition = new Vector3(0, 0.89f ,0);
     }
 
     public void Drop()
@@ -62,6 +64,9 @@ public class CarryableItem : MonoBehaviour, IInteractable2D
             Debug.Log("Carrier is null!");
             return;
         }
+
+        PlayerState.Instance.screwdriver.transform.SetParent(null);
+        PlayerState.Instance.screwdriver.transform.localPosition = new Vector3(PlayerState.Instance.screwdriver.transform.position.x, 0.1f, PlayerState.Instance.screwdriver.transform.position.z);
 
         Vector3 dropPosition = transform.position;
 
