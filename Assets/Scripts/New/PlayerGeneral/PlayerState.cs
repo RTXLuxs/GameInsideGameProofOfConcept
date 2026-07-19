@@ -12,6 +12,8 @@ public class PlayerState : MonoBehaviour
 
     [HideInInspector] public bool canUseTablet = false;
 
+    [HideInInspector] public bool carriesScrewdriver = false;
+
     private void Awake()
     {
         if (Instance != null)

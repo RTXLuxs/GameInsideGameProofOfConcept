@@ -13,6 +13,8 @@ public class WheelchairCutsceneTrigger : MonoBehaviour
 
     private bool triggered = false;
 
+    private GameObject wheelchair2D;
+
     private void Start()
     {
         wheelchairAnimator.enabled = false;
@@ -27,6 +29,9 @@ public class WheelchairCutsceneTrigger : MonoBehaviour
             return;
 
         triggered = true;
+
+        wheelchair2D = GameObject.Find("Wheelchair2D");
+        wheelchair2D.SetActive(false);
 
         PlayerState.Instance.canUseTablet = false;
         tabletAnimator.SetBool("Watching", false);

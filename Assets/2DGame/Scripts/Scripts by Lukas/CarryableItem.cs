@@ -50,6 +50,7 @@ public class CarryableItem : MonoBehaviour, IInteractable2D
         transform.SetParent(playerCarry.CarryPoint);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        PlayerState.Instance.carriesScrewdriver = true;
     }
 
     public void Drop()
