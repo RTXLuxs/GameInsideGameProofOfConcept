@@ -25109,7 +25109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4839150740383658675, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_Name
-      value: Duck_Item (10)
+      value: Screwdriver
       objectReference: {fileID: 0}
     - target: {fileID: 5698149382919853608, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_Pivot.x
@@ -25173,7 +25173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5698149382919853608, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.72
+      value: 25.24
       objectReference: {fileID: 0}
     - target: {fileID: 5698149382919853608, guid: 918ae2f51f8781545b26daf2c780eec3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -41262,7 +41262,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.81, y: 0.04}
+  m_Offset: {x: 1.77, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -41272,7 +41272,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.52, y: 0.98}
+  m_Size: {x: 0.85, y: 0.15}
   m_EdgeRadius: 0
 --- !u!4 &1716105077
 Transform:
@@ -43028,7 +43028,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.81, y: 0.04}
+  m_Offset: {x: 1.77, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -43038,7 +43038,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.52, y: 0.98}
+  m_Size: {x: 0.85, y: 0.15}
   m_EdgeRadius: 0
 --- !u!4 &1875339512
 Transform:
