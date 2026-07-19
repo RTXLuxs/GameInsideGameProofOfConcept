@@ -3,20 +3,35 @@ using UnityEngine.InputSystem;
 
 public class InteractionDetector : MonoBehaviour
 {
-    private IInteractable2D interactableInRange = null; 
+    private IInteractable2D interactableInRange = null;
     public GameObject interactionPrompt;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private PlayerCarryController carryController;
+
     void Start()
     {
         interactionPrompt.SetActive(false);
+
+        // PlayerCarryController is on the parent (Player2D)
+        carryController = GetComponentInParent<PlayerCarryController>();
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!context.performed)
+            return;
+
+        // If there is something to interact with, do that first.
+        if (interactableInRange != null)
         {
-            interactableInRange?.Interact();
+            interactableInRange.Interact();
+            return;
+        }
+
+        // Otherwise drop the currently carried item.
+        if (carryController != null && carryController.IsCarrying)
+        {
+            carryController.Drop();
         }
     }
 
